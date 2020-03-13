@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738060652010",
+    "firebase_url": "https://pfe-2020-51d9c.firebaseio.com",
+    "project_id": "pfe-2020-51d9c",
+    "storage_bucket": "pfe-2020-51d9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738060652010:android:fda5cfe6baf554ad51b693",
+        "android_client_info": {
+          "package_name": "com.braken.project_fin_etude"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738060652010-n3m9scpco1ptotabb139ka6vv4bvf1h9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANm1q5E_ZVcnER_xMUHSjjXNY8vaHVl5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738060652010-n3m9scpco1ptotabb139ka6vv4bvf1h9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
