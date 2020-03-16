@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>738060652010-7904tqbh9kv5gdfaj0pgk8cnn0rafort.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.738060652010-7904tqbh9kv5gdfaj0pgk8cnn0rafort</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAlt-EMW5-fL6joVceKryel6SspE47R_D4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>738060652010</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.braken.projectFinEtude</string>
+	<key>PROJECT_ID</key>
+	<string>pfe-2020-51d9c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pfe-2020-51d9c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:738060652010:ios:e97b60ec7e990f9951b693</string>
+	<key>DATABASE_URL</key>
+	<string>https://pfe-2020-51d9c.firebaseio.com</string>
+</dict>
+</plist>
