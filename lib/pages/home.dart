@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,6 +12,8 @@ import 'search.dart';
 import 'settings.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key key, this.user}) : super(key: key);
+  final FirebaseUser user;
   @override
   _HomeState createState() => _HomeState();
 }

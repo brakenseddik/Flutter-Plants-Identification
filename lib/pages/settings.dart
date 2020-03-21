@@ -16,6 +16,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
      return Scaffold(
+       backgroundColor: Colors.white,
        body: SafeArea(child: Padding(
          padding: const EdgeInsets.symmetric(vertical: 50),
          child: ListView(

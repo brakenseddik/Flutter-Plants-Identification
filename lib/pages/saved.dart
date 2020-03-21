@@ -10,9 +10,8 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      home: Scaffold(
-
+    return  Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(child: GridView.builder(
           gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -64,7 +63,6 @@ class _ChatState extends State<Chat> {
           },
           itemCount: 12,
           ),
-      ),
       ),
     );
   }

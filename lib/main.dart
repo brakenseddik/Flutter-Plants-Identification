@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/pages/dashboard.dart';
 import 'package:project_fin_etude/pages/home.dart';
 import 'package:project_fin_etude/pages/profile.dart';
+import 'package:project_fin_etude/pages/authentification/login.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+
+void main() => runApp(  MultiProvider (providers: [ ChangeNotifierProvider( create:(context) => Dashboard() ) ],
+child:MyApp()
+) );
 
 class MyApp extends StatelessWidget {
 
@@ -10,6 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
       routes: <String,WidgetBuilder>{
         '/profile':(context)=>Profile()
       },
@@ -17,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: Home() ,
+      home: LoginPage() ,
     );
   }
 }

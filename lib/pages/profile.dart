@@ -14,9 +14,9 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
+    return  Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
           child:new ListView (
             children: <Widget>[
              Stack(children: <Widget>[
@@ -45,7 +45,7 @@ class _ProfileState extends State<Profile> {
                  child: Container(
                    decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(25 )),
                    child: IconButton(icon: Icon(Icons.favorite_border,color: Colors.greenAccent,size:28),
-                       onPressed: (){  Navigator.pop(context);
+                       onPressed: (){ // Navigator.pop(context);
                    }),
                  ),
                ),
@@ -115,7 +115,6 @@ class _ProfileState extends State<Profile> {
         ]
         ),
         ),
-      ),
     );
   }
 }

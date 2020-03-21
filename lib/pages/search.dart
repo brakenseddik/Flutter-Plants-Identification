@@ -58,15 +58,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: Text('Firestore search'),
-      ),
+      backgroundColor: Colors.white,
       body: FutureBuilder(
         builder: (_, snapshot) {
           return ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 50),
                 child: TextField(
                   onChanged: (val) {
                     initiateSearch(val);
@@ -74,16 +72,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: InputDecoration(
                     prefixIcon: IconButton(
                       color: Colors.black,
-                      icon: Icon(Icons.arrow_back),
+                      icon: Icon(Icons.search),
                       iconSize: 20.0,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                      //  Navigator.of(context).pop();
                       },
                     ),
                     contentPadding: EdgeInsets.only(left: 25.0),
                     hintText: 'Search by name',
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),
                 ),

@@ -1,0 +1,4 @@
+class Fav {
+  bool isLiked ;
+
+}

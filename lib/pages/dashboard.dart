@@ -1,36 +1,77 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_fin_etude/pages/profile.dart';
+import'package:provider/provider.dart';
 
 void main() => runApp(Dashboard());
 
-class Dashboard extends StatelessWidget {
-  Future getPosts() async {
+class Dashboard extends StatefulWidget with ChangeNotifier {
+  bool isLiked ;
+  void changeStatus()
+  {
+    isLiked=!isLiked;
+    notifyListeners();
+  }
+
+ static Future getPosts() async {
     var firestore = Firestore.instance;
-    QuerySnapshot qn = await firestore.collection('plants').getDocuments();
+    QuerySnapshot qn = await firestore.collection('plants').orderBy('key',descending: false).getDocuments();
     return qn.documents;
   }
 
   @override
+
+  State<StatefulWidget> createState() {
+
+    return DashboardState();
+  }
+}
+  class DashboardState extends State<Dashboard> {
+    Future<void> getUserandPost() async {
+      final user = await FirebaseAuth.instance.currentUser();
+      final userId = user.uid;
+      await Firestore.instance.collection('favorites').add({'uid': userId});
+    }
+    /*Future getcurrentUser() async {
+      final  user = await FirebaseAuth.instance.currentUser();
+      return user.uid;
+    }
+
+
+    Future<void> passeData()async {
+      await Firestore.instance.collection('favorites').add
+        ({'uID':userID});
+    }
+    Future  passData(){
+      //Firestore.instance.collection('favorites').document().setData({'userID':getcurrentUser()});
+      Firestore.instance.collection('favorites').document()
+          .setData({'uID':userID});
+    }*/
+  @override
   Widget build(BuildContext context) {
+    bool isFav = false ;
+    final notifier = Provider.of<Dashboard>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        
+        leading: Icon(Icons.supervised_user_circle,color: Colors.greenAccent,size: 28.0,),
+        title: Text('Home',style: TextStyle(color: Colors.black54,fontSize: 24.0),),
+        backgroundColor: Colors.white70,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                'Home',
-                style: TextStyle(fontSize: 28.0),
-              ),
-            ),
             FutureBuilder(
-                future: getPosts(),
+                future: Dashboard.getPosts(),
                 builder: (_, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.none) {
+                  if (snapshot.error==true) {
                     return Center(
-                      child: Text('Check your internet connection...'),
+                      child: Text('Error! Check your internet connection...'),
                     );
                   } else if (snapshot.data == null) {
                     return Center(
@@ -47,92 +88,90 @@ class Dashboard extends StatelessWidget {
                       );
                     }
 
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 35.0),
-                      child: ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (_, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15.0),
-                            child: GestureDetector(
-                              onTap: () => navigatDetail(snapshot.data[index]),
-                              child: Card(
-                                elevation: 3.0,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-                                child: Stack(
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        ClipRRect(
-                                          child: Image.network(
-                                            snapshot.data[index].data['avatar'],
-                                            height: 100,
-                                            width: MediaQuery.of(context).size.width / 2.4,
-                                            fit: BoxFit.fill,
+                    return ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (_, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 15.0),
+                          child: GestureDetector(
+                            onTap: () => navigatDetail(snapshot.data[index]),
+                            child: Card(
+                              elevation: 5.0,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+                              child: Stack(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ClipRRect(
+                                        child: Image.network(
+                                          snapshot.data[index].data['avatar'],
+                                          height: 100,
+                                          width: MediaQuery.of(context).size.width / 2.4,
+                                          fit: BoxFit.fill,
+                                        ),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.local_florist,
+                                                color: Colors.greenAccent,
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                              Text(
+                                                snapshot.data[index].data['name'],
+                                                style: TextStyle(fontSize: 18.0),
+                                              ),
+                                            ],
                                           ),
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.local_florist,
-                                                  color: Colors.greenAccent,
-                                                ),
-                                                SizedBox(
-                                                  width: 15,
-                                                ),
-                                                Text(
-                                                  snapshot.data[index].data['name'],
-                                                  style: TextStyle(fontSize: 18.0),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 25,
-                                            ),
-                                            Row(
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.class_,
-                                                  color: Colors.greenAccent,
-                                                ),
-                                                SizedBox(
-                                                  width: 15,
-                                                ),
-                                                Text(
-                                                  snapshot.data[index].data['family'],
-                                                  style: TextStyle(fontSize: 18.0),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Positioned(
-                                        right: 10,
-                                        top: 25,
-                                        child: IconButton(
-                                            icon: Icon(
-                                              Icons.favorite_border,
-                                              size: 28,
-                                              color: Colors.greenAccent,
-                                            ),
-                                            onPressed: null))
-                                  ],
-                                ),
-                              ),
+                                          SizedBox(
+                                            height: 25,
+                                          ),
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.class_,
+                                                color: Colors.greenAccent,
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                              Text(
+                                                snapshot.data[index].data['family'],
+                                                style: TextStyle(fontSize: 18.0),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                        Positioned(
+                                      right: 10,
+                                      top: 25,
+                                      child: IconButton (
+                                          onPressed:() {
+                                            //notifier.isLiked = snapshot.data[index].data['isFav'];notifier.changeStatus();
+                                            getUserandPost();
+                                             // print(isFav);
+                                            },
+                                        icon: notifier.isLiked==true ? Icon(Icons.favorite,color:Colors.greenAccent,size: 28,): Icon(Icons.favorite_border,color: Colors.greenAccent,size: 28 )
+                                  ),)
+                                ],
+                              ),//
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     );
                   }
                 }),
@@ -140,8 +179,46 @@ class Dashboard extends StatelessWidget {
         ),
       ),
     );
+
+
   }
+
+
+
+  Widget _icon(IconData icon,
+      {Color color = Colors.transparent,
+        double size = 28,
+        double padding = 10,
+        bool isOutLine = false}) {
+    return Container(
+      height: 40,
+      width: 40,
+      padding: EdgeInsets.all(padding),
+      // margin: EdgeInsets.all(padding),
+      decoration: BoxDecoration(
+        border: Border.all(
+            color: Colors.transparent,//theme data
+            style: isOutLine ? BorderStyle.solid : BorderStyle.none),
+        borderRadius: BorderRadius.all(Radius.circular(13)),
+       /*olor:
+        isOutLine ? Colors.grey : Colors.transparent,*/
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Color(0xfff8f8f8),
+              blurRadius: 5,
+              spreadRadius: 10,
+              offset: Offset(5, 5)),
+        ],
+      ),
+      child: Icon(icon, color: color, size: size),
+    );
+  }
+
+
 }
+
+
+
 //        ListView.builder(
 //          itemBuilder: (context,index){
 //            return Padding(
