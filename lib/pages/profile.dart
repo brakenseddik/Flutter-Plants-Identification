@@ -4,7 +4,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-class Profile extends StatefulWidget {
+ class Profile extends StatefulWidget {
   final DocumentSnapshot post;
   Profile({this.post});
   @override

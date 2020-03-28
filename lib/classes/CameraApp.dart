@@ -14,7 +14,7 @@ class _CameraAppState extends State<CameraApp> {
   picker() async {
     print('Picker is called');
     File img = await ImagePicker.pickImage(source: ImageSource.camera);
-//    File img = await ImagePicker.pickImage(source: ImageSource.gallery);
+//  File img = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (img != null) {
       image = img;
       setState(() {});

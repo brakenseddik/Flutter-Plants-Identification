@@ -26,6 +26,11 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 28
 
+    aaptOptions {
+        noCompress 'tflite'
+        noCompress 'lite'
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }

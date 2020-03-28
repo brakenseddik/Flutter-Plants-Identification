@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:project_fin_etude/pages/details.dart';
 import 'package:project_fin_etude/pages/profile.dart';
 
 import 'dashboard.dart';
@@ -193,7 +194,7 @@ class _HomeState extends State<Home> {
                   ),
                   GestureDetector(
                     child: Text(
-                      'Select image from Gallery',
+                      'Select  from Gallery',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
@@ -210,19 +211,54 @@ class _HomeState extends State<Home> {
 
 //Camera Method
   Future openCamera() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    Navigator.pop(context);
 
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+ if(image!=null){
+   Navigator.push(context,MaterialPageRoute(builder: (context)=>Details(imageFile:image),),);
     setState(() {
       _image = image;
     });
-  }
 
-//Gallery Method
+  }}
+// you want the selected image to display in a new page?????? yes i have this page
+  // there u go i think the navigator should bi in setState
+  // if u are not updating the current ui then u dont need the set state .. set state will call the current widgets build  function u dont need that
+  //if u are not using the image object in the UI then u dont need to put it inside the set state okay thank you so much
+  //do u have idea about machine learning??
+  // as a matter of fact i am learning it right now i want to implements this in my app
+  // my app is about plants identification so i created everything and also the ML i used teachable machine to train my model
+  // now i want to integrate the model in my app
+  // lk whether tenserflow as a package for dart
+  // they must have ye. us can use ur model and predict output tensorflow is the integration tool
+  // yes the model craetsed with trenserflow and there's a package  for it
+  //understand what what i want to implements yeah i understand
+  // do you have any idea?
+  //i will look into it meanwhile make a post in the group someone might know
+  // i've got the idea but i just need some more détails , i found an example of ml in flutter
+  // BTw thank you so much
+  //its fine bro you are welcome
+  //update your ide
+  // Gallery Method
   Future openGallery() async {
-    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    Navigator.pop(context);
 
-    setState(() {
-      _image = picture;
-    });
+    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if(picture!=null){
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>Details(imageFile:picture),),);
+      setState(() {
+        _image = picture;
+      });
+      // add your model file and labels.txt to that folder
+      //I HQVE the model but the labls are related to the firestore names
+      // why the files are not showing i dn't know please if   ur a
+//my laptop is slow pleease wait
+    //you have too many softwares and thread running in the background
+      // if u want to develop flutter apps in this lap u need to format it and install a new os then only use it for flutter development and use a physical device for testing and u can use for browsing internet
+      // if u use for other things or even install anything it can take up memory and cpu use
+
+      // which country are u from?? algeria my laptop is 8 GB RAM AND I5 but slow
+    }
   }
 }
+

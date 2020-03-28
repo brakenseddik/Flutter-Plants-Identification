@@ -339,7 +339,7 @@ class _LoginPageState extends State<LoginPage> {
       _formKey.currentState.save();
       try{
         FirebaseUser user = (await FirebaseAuth.instance.
-        signInWithEmailAndPassword(email: _email, password: _password)).user;
+        signInWithEmailAndPassword(email: _email.trim(), password: _password.trim())).user;
         Navigator.of(context).push(
           CupertinoPageRoute(
             builder: (context) => Home(user: user
