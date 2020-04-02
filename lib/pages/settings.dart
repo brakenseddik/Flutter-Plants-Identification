@@ -15,16 +15,20 @@ class _SettingsState extends State<Settings> {
   }
   @override
   Widget build(BuildContext context) {
+
      return Scaffold(
+
+       appBar: AppBar(
+         backgroundColor: Colors.white,
+         elevation: 0,
+         title: Text('Settings',style: TextStyle(color:Colors.black87,fontSize: 28.0),),
+       ),
        backgroundColor: Colors.white,
        body: SafeArea(child: Padding(
          padding: const EdgeInsets.symmetric(vertical: 50),
-         child: ListView(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
            children: <Widget>[
-             Padding(
-               padding: const EdgeInsets.all(25.0),
-               child: Text('Settings',style: TextStyle(fontSize: 28.0),),
-             ),
             listBuilder(ico: Icon(Icons.help,size: 22,color: Colors.greenAccent,),txt: Text('Help & Support',style: TextStyle(fontSize: 22,),)),
              listBuilder(ico: Icon(Icons.message,size: 22,color: Colors.greenAccent,),txt: Text('Contact us',style: TextStyle(fontSize: 22),)),
              listBuilder(ico: Icon(Icons.star,size: 22,color: Colors.greenAccent,),txt: Text('Rate us',style: TextStyle(fontSize: 22),)),

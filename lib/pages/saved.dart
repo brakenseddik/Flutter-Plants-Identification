@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/classes/fav_status.dart';
+import 'package:provider/provider.dart';
 import 'profile.dart';
 
 class Chat extends StatefulWidget {
@@ -10,7 +12,7 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  bool deleting =false;
+  bool deleting = false;
   Future<Map<String, dynamic>> getUserLikedData() async {
     final Map<String, dynamic> allLikedItems = {};
     final user = await FirebaseAuth.instance.currentUser();
@@ -26,7 +28,7 @@ class _ChatState extends State<Chat> {
 
     for (String itemId in favoriteItems) {
       final plantData =
-      await Firestore.instance.collection('plants').document(itemId).get();
+          await Firestore.instance.collection('plants').document(itemId).get();
       allLikedItems.addAll({itemId: plantData.data});
     }
     //print(allLikedItems);
@@ -48,22 +50,6 @@ class _ChatState extends State<Chat> {
           .delete();
     }
   }*/
-  Future<void> deleteFavoriteStatus(String plantId) async {
-    final user = await FirebaseAuth.instance.currentUser();
-    final userId = user.uid;
-    final ref = await Firestore.instance
-        .collection('favorites')
-        .where('uid', isEqualTo: userId)
-        .where('item', isEqualTo: plantId)
-        .getDocuments();
-    final all = ref.documents;
-    for (var each in all) { print(each.documentID);
-    await Firestore.instance
-        .collection('favorites')
-        .document(each.documentID)
-        .delete();
-    }
-  }
 
   navigatDetail(DocumentSnapshot post) {
     Navigator.of(context).push(
@@ -81,10 +67,14 @@ class _ChatState extends State<Chat> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: Icon(Icons.flare,color: Colors.greenAccent,size: 28,),
+        leading: Icon(
+          Icons.save_alt,
+          color: Colors.greenAccent,
+          size: 28,
+        ),
         title: Text(
           'Saved',
-          style: TextStyle(color: Colors.black87,fontSize: 28),
+          style: TextStyle(color: Colors.black87, fontSize: 28),
         ),
       ),
       backgroundColor: Colors.white,
@@ -93,16 +83,15 @@ class _ChatState extends State<Chat> {
             future: getUserLikedData(),
             builder: (_, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator(
-                  backgroundColor: Colors.grey,
-                ));
+                return Center(child: CircularProgressIndicator());
               }
               final showData =
-              (snapshot.data as Map<String, dynamic>).values.toList();
+                  (snapshot.data as Map<String, dynamic>).values.toList();
               showData.forEach((element) {
                 // print(element['name']);
               });
-              final idList = (snapshot.data as Map<String, dynamic>).keys.toList();
+              final idList =
+                  (snapshot.data as Map<String, dynamic>).keys.toList();
               return GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -110,10 +99,23 @@ class _ChatState extends State<Chat> {
                 itemCount: showData.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical:15.0,horizontal: 14),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 14),
                     child: GestureDetector(
                       //onTap:navigatDetail(showData[index]),
-                      child:Card(
+                      onTap: () async {
+                        QuerySnapshot snaps = await Firestore.instance
+                            .collection('plants')
+                            .where('name', isEqualTo: showData[index]['name'])
+                            .getDocuments();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Profile(
+                                      post: snaps.documents[0],
+                                    )));
+                      },
+                      child: Card(
                         elevation: 6.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0)),
@@ -126,7 +128,7 @@ class _ChatState extends State<Chat> {
                                     showData[index]['avatar'],
                                     width: double.infinity,
                                     height:
-                                    MediaQuery.of(context).size.height / 8,
+                                        MediaQuery.of(context).size.height / 8,
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius: BorderRadius.only(
@@ -137,24 +139,29 @@ class _ChatState extends State<Chat> {
                                     top: 16.0,
                                     right: 20.0,
                                     child: GestureDetector(
-                                      onTap: (){
+                                      onTap: () {
                                         setState(() {
-                                          deleting=true;
+                                          deleting = true;
                                         });
-                                        deleteFavoriteStatus(idList[index]).then((value) => setState((){
-                                          deleting=false;
-                                        }));},
+                                        Provider.of<Fav>(context, listen: false)
+                                            .deleteFavStatus(idList[index])
+                                            .then((value) => setState(() {
+                                                  deleting = false;
+                                                }));
+                                      },
                                       child: Container(
                                           padding: EdgeInsets.all(5),
                                           decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                              BorderRadius.circular(20)),
-                                          child: deleting?CircularProgressIndicator(): Icon(
-                                            Icons.delete,
-                                            size: 25,
-                                            color: Colors.greenAccent,
-                                          )),
+                                                  BorderRadius.circular(20)),
+                                          child: deleting
+                                              ? CircularProgressIndicator()
+                                              : Icon(
+                                                  Icons.delete,
+                                                  size: 25,
+                                                  color: Colors.greenAccent,
+                                                )),
                                     )),
                               ],
                             ),

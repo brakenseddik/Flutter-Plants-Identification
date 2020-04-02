@@ -58,13 +58,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: Icon(Icons.search,color: Colors.greenAccent,size: 28,),
+        title: Text('Search',style: TextStyle(color:Colors.black87,fontSize: 28.0),),
+      ),
       backgroundColor: Colors.white,
       body: FutureBuilder(
         builder: (_, snapshot) {
           return ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 50),
+                padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 20),
                 child: TextField(
                   onChanged: (val) {
                     initiateSearch(val);

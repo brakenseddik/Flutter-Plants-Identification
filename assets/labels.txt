@@ -1,18 +1,18 @@
-0 Genévier
+0 Genévrier
 1 Blé
 2 Ail
 3 Hyope
-4 Asprge
-5 Ibéris Lycium
+4 Asperge
+5 Ibéris amer
 6 Achillée
 7 Fenouil
 8 Livèche
 9 Ginseng
-10 Jasmin
+10 Jasmin blanc
 11 Carotte
 12 Muguet
 13 Molène
 14 Ananas
 15 Argan
-16 Fenegrec
+16 Fenugrec
 17 Haricot
