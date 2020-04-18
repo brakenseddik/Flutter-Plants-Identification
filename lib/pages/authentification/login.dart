@@ -6,7 +6,6 @@ import 'package:project_fin_etude/Widget/bezierContainer.dart';
 import 'package:project_fin_etude/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
   final FirebaseUser title;
@@ -21,7 +20,6 @@ class _LoginPageState extends State<LoginPage> {
 
   String _email;
   String _password;
-
 
   /*Widget _backButton() {
     return InkWell(
@@ -58,19 +56,24 @@ class _LoginPageState extends State<LoginPage> {
             height: 10,
           ),
           TextFormField(
-            keyboardType:TextInputType.emailAddress,
-            // ignore: missing_return
-            validator:(input) {if(input.isEmpty){'please tap an email';}},
-              onSaved: (input)=>_email=input,
+              keyboardType: TextInputType.emailAddress,
+              // ignore: missing_return
+              validator: (input) {
+                if (input.isEmpty) {
+                  'please tap an email';
+                }
+              },
+              onSaved: (input) => _email = input,
               obscureText: isPassword,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  fillColor: Color(0xfff3f3f4),
+                  fillColor: Color(0xffE7E7E7),
                   filled: true))
         ],
       ),
     );
   }
+
   Widget _entryPassword(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -85,9 +88,13 @@ class _LoginPageState extends State<LoginPage> {
             height: 10,
           ),
           TextFormField(
-            // ignore: missing_return
-            validator:(input) {if(input.isEmpty){ 'please enter your password';}},
-              onSaved: (input)=>_password=input,
+              // ignore: missing_return
+              validator: (input) {
+                if (input.isEmpty) {
+                  'please enter your password';
+                }
+              },
+              onSaved: (input) => _password = input,
               obscureText: isPassword,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -100,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _submitButton() {
     return InkWell(
-      onTap: ()=>signIn(),
+      onTap: () => signIn(),
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 15),
@@ -272,83 +279,151 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  bool loading = false;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              child: Stack(
-                children: <Widget>[
-                  Form(
-                    key: _formKey,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(
-                            flex: 3,
-                            child: SizedBox(),
-                          ),
-                          _title(),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          _emailPasswordWidget(),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          _submitButton(),
-                          Container(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            alignment: Alignment.centerRight,
-                            child: Text('Forgot Password ?',
-                                style:
-                                TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-                          ),
-                          _divider(),
-                          _facebookButton(),
-                          Expanded(
-                            flex: 2,
-                            child: SizedBox(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: _createAccountLabel(),
-                  ),
-                 // Positioned(top: 40, left: 0, child: _backButton()),
-                  Positioned(
-                      top: -MediaQuery.of(context).size.height * .15,
-                      right: -MediaQuery.of(context).size.width * .4,
-                      child: BezierContainer())
-                ],
-              ),
-            )
-        )
-    );
-
+  void initState() {
+    super.initState();
+    detectUser();
   }
-  void signIn() async {
-    if(_formKey.currentState.validate()){
-      _formKey.currentState.save();
-      try{
-        FirebaseUser user = (await FirebaseAuth.instance.
-        signInWithEmailAndPassword(email: _email.trim(), password: _password.trim())).user;
-        Navigator.of(context).push(
-          CupertinoPageRoute(
-            builder: (context) => Home(user: user
-            ),
-          ),
-        );}catch(e){
-        print(e);
-      }
+
+  void detectUser() async {
+    setState(() {
+      loading = true;
+    });
+    FirebaseAuth _auth1 = FirebaseAuth.instance;
+    FirebaseUser user1 = await _auth1.currentUser();
+    if (user1.uid != null) {
+      print(user1);
+      Navigator.pushReplacement(
+        context,
+        CupertinoPageRoute(
+          builder: (context) => Home(user: user1),
+        ),
+      );
+      setState(() {
+        loading = false;
+      });
+    } else {
+      print(user1);
+      setState(() {
+        loading = false;
+      });
     }
   }
 
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        key: _scaffoldKey,
+        body: loading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: Stack(
+                  children: <Widget>[
+                    Form(
+                      key: _formKey,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 3,
+                              child: SizedBox(),
+                            ),
+                            _title(),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            _emailPasswordWidget(),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            _submitButton(),
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              alignment: Alignment.centerRight,
+                              child: Text('Forgot Password ?',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500)),
+                            ),
+                            _divider(),
+                            _facebookButton(),
+                            Expanded(
+                              flex: 2,
+                              child: SizedBox(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: _createAccountLabel(),
+                    ),
+                    // Positioned(top: 40, left: 0, child: _backButton()),
+                    Positioned(
+                        top: -MediaQuery.of(context).size.height * .15,
+                        right: -MediaQuery.of(context).size.width * .4,
+                        child: BezierContainer())
+                  ],
+                ),
+              )));
+  }
+
+  void signIn() async {
+    setState(() {
+      loading = true;
+    });
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      try {
+        FirebaseUser user = (await FirebaseAuth.instance
+                .signInWithEmailAndPassword(
+                    email: _email.trim(), password: _password.trim()))
+            .user;
+        Navigator.pushReplacement(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => Home(user: user),
+          ),
+        );
+        setState(() {
+          loading = false;
+        });
+      } catch (e) {
+        setState(() {
+          loading = false;
+        });
+        _scaffoldKey.currentState
+          ..showSnackBar(
+            SnackBar(
+              content: Text(
+                'Login Error',
+              ),
+            ),
+          );
+        print(e);
+      }
+    } else {
+      setState(() {
+        loading = false;
+      });
+      _scaffoldKey.currentState
+        ..showSnackBar(
+          SnackBar(
+            content: Text(
+              'Login Error',
+            ),
+          ),
+        );
+    }
+  }
 }

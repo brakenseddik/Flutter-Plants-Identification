@@ -8,7 +8,8 @@ import 'package:project_fin_etude/pages/welcome/splashScreen.dart';
 import 'package:provider/provider.dart';
 
 
-void main() => runApp(  MultiProvider (providers: [ ChangeNotifierProvider( create:(context) => Fav(), ) ],
+void main() => runApp(
+    MultiProvider (providers: [ ChangeNotifierProvider( create:(context) => Fav(), ), ],
 child:MyApp()
 ) );
 

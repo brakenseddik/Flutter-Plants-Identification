@@ -41,6 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   curved_navigation_bar: ^0.1.26
+  connectivity_widget: ^0.1.5
 
 
 
