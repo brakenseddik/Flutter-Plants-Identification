@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_fin_etude/pages/authentification/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_fin_etude/Widget/bezierContainer.dart';
+import 'package:project_fin_etude/widgets/bezierContainer.dart';
 import 'package:project_fin_etude/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -292,7 +292,8 @@ class _LoginPageState extends State<LoginPage> {
     });
     FirebaseAuth _auth1 = FirebaseAuth.instance;
     FirebaseUser user1 = await _auth1.currentUser();
-    if (user1.uid != null) {
+
+    if (user1 != null) {
       print(user1);
       Navigator.pushReplacement(
         context,
@@ -304,7 +305,7 @@ class _LoginPageState extends State<LoginPage> {
         loading = false;
       });
     } else {
-      print(user1);
+      //print(user1);
       setState(() {
         loading = false;
       });
@@ -325,6 +326,10 @@ class _LoginPageState extends State<LoginPage> {
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: <Widget>[
+                    Positioned(
+                        top: -MediaQuery.of(context).size.height * .15,
+                        right: -MediaQuery.of(context).size.width * .4,
+                        child: BezierContainer()),
                     Form(
                       key: _formKey,
                       child: Container(
@@ -369,10 +374,6 @@ class _LoginPageState extends State<LoginPage> {
                       child: _createAccountLabel(),
                     ),
                     // Positioned(top: 40, left: 0, child: _backButton()),
-                    Positioned(
-                        top: -MediaQuery.of(context).size.height * .15,
-                        right: -MediaQuery.of(context).size.width * .4,
-                        child: BezierContainer())
                   ],
                 ),
               )));
@@ -415,6 +416,7 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       setState(() {
         loading = false;
+        LoginPage();
       });
       _scaffoldKey.currentState
         ..showSnackBar(

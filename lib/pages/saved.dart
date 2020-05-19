@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/classes/fav_status.dart';
+import 'package:project_fin_etude/provider/fav_status.dart' show Fav;
 import 'package:provider/provider.dart';
+import 'package:project_fin_etude/styles/styles.dart';
 import 'profile.dart';
 
 class Chat extends StatefulWidget {
@@ -74,7 +75,7 @@ class _ChatState extends State<Chat> {
         ),
         title: Text(
           'Saved',
-          style: TextStyle(color: Colors.black87, fontSize: 28),
+          style: kPagetitle,
         ),
       ),
       backgroundColor: Colors.white,

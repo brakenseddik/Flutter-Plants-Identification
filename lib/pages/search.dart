@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/classes/searchservice.dart';
+import 'package:project_fin_etude/models/searchservice.dart';
 import 'package:project_fin_etude/pages/profile.dart';
+import 'package:project_fin_etude/styles/styles.dart';
 
 void main() => runApp(new Search());
 
@@ -20,7 +21,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Future getPost(String searchField) async {
-    QuerySnapshot qt = await Firestore.instance.collection('plants').where('key', isEqualTo: searchField.substring(0, 1).toUpperCase()).getDocuments();
+    QuerySnapshot qt = await Firestore.instance
+        .collection('plants')
+        .where('key', isEqualTo: searchField.substring(0, 1).toUpperCase())
+        .getDocuments();
     return qt;
   }
 
@@ -35,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
       });
     }
 
-    var capitalizedValue = value.substring(0, 1).toUpperCase() + value.substring(1);
+    var capitalizedValue =
+        value.substring(0, 1).toUpperCase() + value.substring(1);
 
     if (queryResultSet.length == 0 && value.length == 1) {
       SearchService().searchByName(value).then((QuerySnapshot docs) {
@@ -61,8 +66,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: Icon(Icons.search,color: Colors.greenAccent,size: 28,),
-        title: Text('Search',style: TextStyle(color:Colors.black87,fontSize: 28.0),),
+        leading: Icon(
+          Icons.search,
+          color: Colors.greenAccent,
+          size: 28,
+        ),
+        title: Text(
+          'Search',
+          style: kPagetitle,
+        ),
       ),
       backgroundColor: Colors.white,
       body: FutureBuilder(
@@ -70,7 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
                 child: TextField(
                   onChanged: (val) {
                     initiateSearch(val);
@@ -81,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.search),
                       iconSize: 20.0,
                       onPressed: () {
-                      //  Navigator.of(context).pop();
+                        //  Navigator.of(context).pop();
                       },
                     ),
                     contentPadding: EdgeInsets.only(left: 25.0),
@@ -93,18 +106,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               SizedBox(height: 10.0),
-              GridView.count(
+              ListView.separated(
                 padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                crossAxisCount: 2,
-                crossAxisSpacing: 4.0,
-                mainAxisSpacing: 4.0,
-                primary: false,
+                itemCount: tempSearchStore.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () =>
+                        navigateDetail(tempSearchStore[index], context),
+                    child: Card(
+                      child: ListTile(
+                        subtitle: Text(
+                          tempSearchStore[index]['family'],
+                          style: klisttileSubtitle,
+                        ),
+                        title: Text(tempSearchStore[index]['name'],
+                            style: listtileTitle),
+                      ),
+                    ),
+                  );
+                },
                 shrinkWrap: true,
-                children: tempSearchStore.map(
-                  (element) {
-                    return buildResultCard(element, context);
-                  },
-                ).toList(),
+                separatorBuilder: (context, index) => Divider(),
               ),
             ],
           );
@@ -118,28 +140,6 @@ class _MyHomePageState extends State<MyHomePage> {
       CupertinoPageRoute(
         builder: (context) => Profile(
           post: post,
-        ),
-      ),
-    );
-  }
-
-  Widget buildResultCard(data, ctx) {
-    return GestureDetector(
-      onTap: () => navigateDetail(data, ctx),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        elevation: 2.0,
-        child: Container(
-          child: Center(
-            child: Text(
-              data['name'],
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20.0,
-              ),
-            ),
-          ),
         ),
       ),
     );

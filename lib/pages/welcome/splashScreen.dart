@@ -1,23 +1,38 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/pages/home.dart';
+import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:project_fin_etude/pages/welcome/onBoarding.dart';
+import 'package:project_fin_etude/styles/styles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class Splash extends StatefulWidget {
-
   @override
-
   _SplashState createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
+  Future checkFirstSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool _seen = (prefs.getBool('seen') ?? false);
+
+    if (_seen) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => LoginPage()));
+    } else {
+      await prefs.setBool('seen', true);
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => OnboardingScreen()));
+    }
+  }
+
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 4),
-            () =>  Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => OnboardingScreen(
-          ),)));
+    Timer(new Duration(seconds: 4), () {
+      checkFirstSeen();
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,29 +43,19 @@ class _SplashState extends State<Splash> {
               fit: BoxFit.cover,
             ),
           ),
-          child: SafeArea(child: Center(
+          child: Container(
+            padding: EdgeInsets.only(bottom: 95.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Text('FLOOREX',
-                  style: TextStyle(
-                    color: Colors.white,fontSize: 38,letterSpacing: 22,
-                    fontFamily: 'Crimson Text',fontWeight: FontWeight.w700,
-                  ),),
+                Text('FLOOREX', style: kHeaderTitle),
                 Divider(
                   height: 20,
                 ),
-                Text('Explore medical plants',
-                  style: TextStyle(
-                      fontFamily: 'Lato',fontWeight: FontWeight.normal,
-
-                      color: Colors.white,fontSize: 18),),
-
+                Text('Explore medical plants', style: kbigTitle),
               ],
             ),
-          ))
-      ),
+          )),
     );
   }
 }
-

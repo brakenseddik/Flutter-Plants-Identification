@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/pages/contact.dart';
+import 'package:project_fin_etude/styles/styles.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -22,9 +24,14 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        leading: Icon(
+          Icons.settings,
+          color: Colors.greenAccent,
+          size: 28.0,
+        ),
         title: Text(
           'Settings',
-          style: TextStyle(color: Colors.black87, fontSize: 28.0),
+          style: kPagetitle,
         ),
       ),
       backgroundColor: Colors.white,
@@ -46,16 +53,22 @@ class _SettingsState extends State<Settings> {
                     fontSize: 22,
                   ),
                 )),
-            listBuilder(
-                ico: Icon(
-                  Icons.message,
-                  size: 22,
-                  color: Colors.greenAccent,
-                ),
-                txt: Text(
-                  'Contact us',
-                  style: TextStyle(fontSize: 22),
-                )),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Contact()));
+              },
+              child: listBuilder(
+                  ico: Icon(
+                    Icons.message,
+                    size: 22,
+                    color: Colors.greenAccent,
+                  ),
+                  txt: Text(
+                    'Contact us',
+                    style: TextStyle(fontSize: 22),
+                  )),
+            ),
             listBuilder(
                 ico: Icon(
                   Icons.star,

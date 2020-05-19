@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/Widget/bezierContainer.dart';
+import 'package:project_fin_etude/widgets/bezierContainer.dart';
 import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../home.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key, this.title}) : super(key: key);
@@ -45,6 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
     else
       return null;
   }
+
   Widget _backButton() {
     return InkWell(
       onTap: () {
@@ -80,9 +79,9 @@ class _SignUpPageState extends State<SignUpPage> {
             height: 10,
           ),
           TextFormField(
-            // ignore: missing_return
-              validator:validateName,
-              onSaved: (input)=>_name=input,
+              // ignore: missing_return
+              validator: validateName,
+              onSaved: (input) => _name = input,
               obscureText: isPassword,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -92,6 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
+
   Widget _entryEmail(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -106,10 +106,10 @@ class _SignUpPageState extends State<SignUpPage> {
             height: 10,
           ),
           TextFormField(
-              keyboardType:TextInputType.emailAddress,
+              keyboardType: TextInputType.emailAddress,
               // ignore: missing_return
-              validator:validateEmail,
-              onSaved: (input)=>_email=input,
+              validator: validateEmail,
+              onSaved: (input) => _email = input,
               obscureText: isPassword,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -119,6 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
+
   Widget _entryPassword(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -133,9 +134,9 @@ class _SignUpPageState extends State<SignUpPage> {
             height: 10,
           ),
           TextFormField(
-            // ignore: missing_return
-              validator:validatePassword,
-              onSaved: (input)=>_password=input,
+              // ignore: missing_return
+              validator: validatePassword,
+              onSaved: (input) => _password = input,
               obscureText: isPassword,
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -145,9 +146,10 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
+
   Widget _submitButton() {
     return InkWell(
-      onTap:  createUser,
+      onTap: createUser,
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 15),
@@ -243,55 +245,54 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child:Container(
-              height: MediaQuery.of(context).size.height,
-              child:Stack(
+            child: Container(
+      height: MediaQuery.of(context).size.height,
+      child: Stack(
+        children: <Widget>[
+          Form(
+            key: _formKey,
+            autovalidate: _autoValidate,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Form(
-                    key: _formKey,
-                    autovalidate: _autoValidate,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(
-                            flex: 3,
-                            child: SizedBox(),
-                          ),
-                          _title(),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          _emailPasswordWidget(),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          _submitButton(),
-                          Expanded(
-                            flex: 2,
-                            child: SizedBox(),
-                          )
-                        ],
-                      ),
-                    ),
+                  Expanded(
+                    flex: 3,
+                    child: SizedBox(),
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: _loginAccountLabel(),
+                  _title(),
+                  SizedBox(
+                    height: 50,
                   ),
-                  Positioned(top: 40, left: 0, child: _backButton()),
-                  Positioned(
-                      top: -MediaQuery.of(context).size.height * .15,
-                      right: -MediaQuery.of(context).size.width * .4,
-                      child: BezierContainer())
+                  _emailPasswordWidget(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  _submitButton(),
+                  Expanded(
+                    flex: 2,
+                    child: SizedBox(),
+                  )
                 ],
               ),
-            )
-        )
-    );
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: _loginAccountLabel(),
+          ),
+          Positioned(top: 40, left: 0, child: _backButton()),
+          Positioned(
+              top: -MediaQuery.of(context).size.height * .15,
+              right: -MediaQuery.of(context).size.width * .4,
+              child: BezierContainer())
+        ],
+      ),
+    )));
   }
+
   void _validateInputs() {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
@@ -303,21 +304,23 @@ class _SignUpPageState extends State<SignUpPage> {
       });
     }
   }
+
   void createUser() async {
-    if(_formKey.currentState.validate()){
+    if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      try{
-        FirebaseUser user = (await FirebaseAuth.instance.
-        createUserWithEmailAndPassword(email: _email, password: _password)).user;
+      try {
+        FirebaseUser user = (await FirebaseAuth.instance
+                .createUserWithEmailAndPassword(
+                    email: _email, password: _password))
+            .user;
         Navigator.of(context).push(
           CupertinoPageRoute(
-            builder: (context) =>LoginPage(title: user
-            ),
+            builder: (context) => LoginPage(title: user),
           ),
-        );}catch(e){
+        );
+      } catch (e) {
         print(e);
       }
     }
   }
-
 }

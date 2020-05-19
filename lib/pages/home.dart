@@ -54,8 +54,10 @@ class _HomeState extends State<Home> {
                 bucket: bucket,
               )
             : Center(
-                child: Text(
-                  'offline',
+                child: Image(
+                  image: AssetImage('images/offline-icon-6.png'),
+                  height: 300,
+                  width: 300,
                 ),
               ),
         floatingActionButton: FloatingActionButton(
@@ -195,7 +197,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Icon(
-                            Icons.settings,
+                            FontAwesomeIcons.briefcase,
                             color: currentTab == 3
                                 ? Color(0XFF1aff1a)
                                 : Colors.grey,
@@ -279,25 +281,6 @@ class _HomeState extends State<Home> {
     }
   }
 
-// you want the selected image to display in a new page?????? yes i have this page
-  // there u go i think the navigator should bi in setState
-  // if u are not updating the current ui then u dont need the set state .. set state will call the current widgets build  function u dont need that
-  //if u are not using the image object in the UI then u dont need to put it inside the set state okay thank you so much
-  //do u have idea about machine learning??
-  // as a matter of fact i am learning it right now i want to implements this in my app
-  // my app is about plants identification so i created everything and also the ML i used teachable machine to train my model
-  // now i want to integrate the model in my app
-  // lk whether tenserflow as a package for dart
-  // they must have ye. us can use ur model and predict output tensorflow is the integration tool
-  // yes the model craetsed with trenserflow and there's a package  for it
-  //understand what what i want to implements yeah i understand
-  // do you have any idea?
-  //i will look into it meanwhile make a post in the group someone might know
-  // i've got the idea but i just need some more détails , i found an example of ml in flutter
-  // BTw thank you so much
-  //its fine bro you are welcome
-  //update your ide
-  // Gallery Method
   Future openGallery() async {
     Navigator.pop(context);
 
@@ -312,15 +295,6 @@ class _HomeState extends State<Home> {
       setState(() {
         _image = picture;
       });
-      // add your model file and labels.txt to that folder
-      //I HQVE the model but the labls are related to the firestore names
-      // why the files are not showing i dn't know please if   ur a
-//my laptop is slow pleease wait
-      //you have too many softwares and thread running in the background
-      // if u want to develop flutter apps in this lap u need to format it and install a new os then only use it for flutter development and use a physical device for testing and u can use for browsing internet
-      // if u use for other things or even install anything it can take up memory and cpu use
-
-      // which country are u from?? algeria my laptop is 8 GB RAM AND I5 but slow
     }
   }
 }
