@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:project_fin_etude/pages/contact.dart';
 import 'package:project_fin_etude/styles/styles.dart';
+
+final _auth = FirebaseAuth.instance;
+FirebaseUser loggedInUser;
 
 class Settings extends StatefulWidget {
   @override
@@ -8,6 +13,24 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   ListTile listBuilder({Icon ico, Text txt}) {
     return ListTile(
       leading: ico,
@@ -97,6 +120,15 @@ class _SettingsState extends State<Settings> {
                 'Share',
                 style: TextStyle(fontSize: 22),
               )),
+          GestureDetector(
+            onTap: () {
+              _auth.signOut();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => LoginPage()));
+            },
+            child:
+                listBuilder(ico: Icon(Icons.autorenew), txt: Text('Log out')),
+          )
         ],
       )),
     );
