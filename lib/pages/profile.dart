@@ -42,6 +42,8 @@ class _ProfileState extends State<Profile> {
                           Container(
                             height: MediaQuery.of(context).size.height / 3,
                             child: Carousel(
+                              dotBgColor: Colors.transparent,
+                              dotColor: Colors.greenAccent,
                               boxFit: BoxFit.fill,
                               images: [
                                 NetworkImage(widget.post.data['album'][0]),

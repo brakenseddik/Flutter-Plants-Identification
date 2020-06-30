@@ -8,7 +8,7 @@ class Contact extends StatelessWidget {
         title: Text('Contact Us'),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 40, horizontal: 30),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -22,17 +22,17 @@ class Contact extends StatelessWidget {
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                 ),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                 ),
               ),
             ),
             TextFormField(
               decoration: InputDecoration(
-                labelText: "Name",
+                labelText: "E-mail",
                 filled: true,
                 fillColor: Color(0xFFE7E7E7),
                 //hintText: 'Username',
@@ -40,11 +40,11 @@ class Contact extends StatelessWidget {
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                 ),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                 ),
               ),
             ),
@@ -58,21 +58,25 @@ class Contact extends StatelessWidget {
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                 ),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                 ),
               ),
               keyboardType: TextInputType.multiline,
               textInputAction: TextInputAction.newline,
               maxLines: 10,
             ),
-            RaisedButton(
-              color: Colors.lightGreen,
-              child: Text('Send'),
-              onPressed: () {},
+            Container(
+              width: double.infinity,
+              height: 50,
+              child: RaisedButton(
+                color: Colors.greenAccent,
+                child: Text('Send'),
+                onPressed: () {},
+              ),
             )
           ],
         ),

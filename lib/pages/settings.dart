@@ -36,71 +36,68 @@ class _SettingsState extends State<Settings> {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            listBuilder(
+          child: Column(
+        /// mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          listBuilder(
+              ico: Icon(
+                Icons.help,
+                size: 22,
+                color: Colors.greenAccent,
+              ),
+              txt: Text(
+                'Help & Support',
+                style: TextStyle(
+                  fontSize: 22,
+                ),
+              )),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Contact()));
+            },
+            child: listBuilder(
                 ico: Icon(
-                  Icons.help,
+                  Icons.message,
                   size: 22,
                   color: Colors.greenAccent,
                 ),
                 txt: Text(
-                  'Help & Support',
-                  style: TextStyle(
-                    fontSize: 22,
-                  ),
-                )),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Contact()));
-              },
-              child: listBuilder(
-                  ico: Icon(
-                    Icons.message,
-                    size: 22,
-                    color: Colors.greenAccent,
-                  ),
-                  txt: Text(
-                    'Contact us',
-                    style: TextStyle(fontSize: 22),
-                  )),
-            ),
-            listBuilder(
-                ico: Icon(
-                  Icons.star,
-                  size: 22,
-                  color: Colors.greenAccent,
-                ),
-                txt: Text(
-                  'Rate us',
+                  'Contact us',
                   style: TextStyle(fontSize: 22),
                 )),
-            listBuilder(
-                ico: Icon(
-                  Icons.feedback,
-                  size: 22,
-                  color: Colors.greenAccent,
-                ),
-                txt: Text(
-                  'Report',
-                  style: TextStyle(fontSize: 22),
-                )),
-            listBuilder(
-                ico: Icon(
-                  Icons.share,
-                  size: 22,
-                  color: Colors.greenAccent,
-                ),
-                txt: Text(
-                  'Share',
-                  style: TextStyle(fontSize: 22),
-                )),
-          ],
-        ),
+          ),
+          listBuilder(
+              ico: Icon(
+                Icons.star,
+                size: 22,
+                color: Colors.greenAccent,
+              ),
+              txt: Text(
+                'Rate us',
+                style: TextStyle(fontSize: 22),
+              )),
+          listBuilder(
+              ico: Icon(
+                Icons.feedback,
+                size: 22,
+                color: Colors.greenAccent,
+              ),
+              txt: Text(
+                'Report',
+                style: TextStyle(fontSize: 22),
+              )),
+          listBuilder(
+              ico: Icon(
+                Icons.share,
+                size: 22,
+                color: Colors.greenAccent,
+              ),
+              txt: Text(
+                'Share',
+                style: TextStyle(fontSize: 22),
+              )),
+        ],
       )),
     );
   }
