@@ -123,7 +123,7 @@ class _SettingsState extends State<Settings> {
           GestureDetector(
             onTap: () {
               _auth.signOut();
-              Navigator.push(context,
+              Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => LoginPage()));
             },
             child:

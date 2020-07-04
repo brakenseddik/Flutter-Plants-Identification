@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                 if (value.isEmpty ||
                     !RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
                         .hasMatch(value)) {
-                  return 'Enter valid email';
+                  return 'Enter a valid email';
                 }
                 return null;
               },
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
               // ignore: missing_return
               validator: (input) {
                 if (input.isEmpty) {
-                  return 'please enter your password';
+                  return 'Enter a valid password';
                 }
               },
               onSaved: (input) => _password = input,

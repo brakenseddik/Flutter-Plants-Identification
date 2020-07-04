@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{'/profile': (context) => Profile()},
-      title: 'Planteex',
+      title: 'Plantex',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
