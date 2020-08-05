@@ -129,7 +129,7 @@ class _ChatState extends State<Chat> {
                                     showData[index]['avatar'],
                                     width: double.infinity,
                                     height:
-                                        MediaQuery.of(context).size.height / 8,
+                                        MediaQuery.of(context).size.height / 7,
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius: BorderRadius.only(

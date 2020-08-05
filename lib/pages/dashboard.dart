@@ -99,7 +99,7 @@ class DashboardState extends State<Dashboard> {
                                       height: 100,
                                       width: MediaQuery.of(context).size.width /
                                           2.4,
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.cover,
                                     ),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
@@ -118,7 +118,7 @@ class DashboardState extends State<Dashboard> {
                                             color: Colors.greenAccent,
                                           ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 5,
                                           ),
                                           Text(
                                             snapshot.data[index].data['name'],
@@ -136,7 +136,7 @@ class DashboardState extends State<Dashboard> {
                                             color: Colors.greenAccent,
                                           ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 5,
                                           ),
                                           Text(
                                             snapshot.data[index].data['family'],

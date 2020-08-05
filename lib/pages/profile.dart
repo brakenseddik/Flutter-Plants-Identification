@@ -107,11 +107,11 @@ class _ProfileState extends State<Profile> {
                                     size: 24,
                                   ),
                                   SizedBox(
-                                    width: 15,
+                                    width: 5,
                                   ),
                                   Text(
                                     widget.post.data['name'],
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(fontSize: 18),
                                   )
                                 ],
                               ),
@@ -123,11 +123,11 @@ class _ProfileState extends State<Profile> {
                                     size: 24,
                                   ),
                                   SizedBox(
-                                    width: 15,
+                                    width: 5,
                                   ),
                                   Text(
                                     widget.post.data['family'],
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(fontSize: 18),
                                   )
                                 ],
                               ),
