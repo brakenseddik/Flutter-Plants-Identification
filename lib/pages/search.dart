@@ -90,9 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   decoration: InputDecoration(
                     prefixIcon: IconButton(
-                      color: Colors.black,
+                      color: Colors.green,
                       icon: Icon(Icons.search),
-                      iconSize: 20.0,
+                      iconSize: 24.0,
                       onPressed: () {
                         //  Navigator.of(context).pop();
                       },
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     contentPadding: EdgeInsets.only(left: 25.0),
                     hintText: 'Search by name',
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
                 ),
@@ -115,6 +115,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         navigateDetail(tempSearchStore[index], context),
                     child: Card(
                       child: ListTile(
+                        leading: CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              NetworkImage(tempSearchStore[index]['avatar']),
+                        ),
                         subtitle: Text(
                           tempSearchStore[index]['family'],
                           style: klisttileSubtitle,

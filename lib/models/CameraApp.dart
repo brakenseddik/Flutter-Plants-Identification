@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+
 class CameraApp extends StatefulWidget {
   @override
   _CameraAppState createState() => _CameraAppState();
@@ -14,7 +15,7 @@ class _CameraAppState extends State<CameraApp> {
   picker() async {
     print('Picker is called');
     File img = await ImagePicker.pickImage(source: ImageSource.camera);
-//  File img = await ImagePicker.pickImage(source: ImageSource.gallery);
+//File img = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (img != null) {
       image = img;
       setState(() {});

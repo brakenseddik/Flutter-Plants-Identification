@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:project_fin_etude/pages/welcome/onBoarding.dart';
+import 'package:project_fin_etude/pages/welcome/onBoardingScreen.dart';
 import 'package:project_fin_etude/styles/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,7 +29,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(new Duration(seconds: 4), () {
+    Timer(new Duration(seconds: 6), () {
       checkFirstSeen();
     });
   }
@@ -48,7 +49,7 @@ class _SplashState extends State<Splash> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Text('FLOOREX', style: kHeaderTitle),
+                Text('FLOREEX', style: kHeaderTitle),
                 Divider(
                   height: 20,
                 ),

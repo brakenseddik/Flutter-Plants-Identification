@@ -24,6 +24,8 @@ dependencies:
   cloud_firestore:
   tflite: ^1.0.5
   image_picker:
+  sk_onboarding_screen: ^1.0.1
+
   flutter:
     sdk: flutter
   http:

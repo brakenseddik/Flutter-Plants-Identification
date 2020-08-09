@@ -20,9 +20,13 @@ class _ContactState extends State<Contact> {
         child: Form(
           key: _formKey,
           child: ListView(
+            padding: EdgeInsets.only(top: 30),
             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               TextFormField(
+                validator: (value) {
+                  if (value.length < 6) return 'name too short';
+                },
                 decoration: InputDecoration(
                   labelText: "Name",
                   filled: true,
@@ -44,6 +48,15 @@ class _ContactState extends State<Contact> {
                 height: 30,
               ),
               TextFormField(
+                validator: (value) {
+                  Pattern pattern =
+                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                  RegExp regex = new RegExp(pattern);
+                  if (!regex.hasMatch(value))
+                    return 'Enter Valid Email';
+                  else
+                    return null;
+                },
                 decoration: InputDecoration(
                   labelText: "E-mail",
                   filled: true,
@@ -65,6 +78,9 @@ class _ContactState extends State<Contact> {
                 height: 30,
               ),
               TextFormField(
+                validator: (value) {
+                  if (value.isEmpty) return 'Enter your message';
+                },
                 decoration: InputDecoration(
                   labelText: "Message",
                   filled: true,
@@ -102,5 +118,11 @@ class _ContactState extends State<Contact> {
         ),
       ),
     );
+  }
+
+  void validateForm() async {
+    if (_formKey.currentState.validate()) {
+      print('e');
+    }
   }
 }
