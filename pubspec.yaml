@@ -36,6 +36,8 @@ dependencies:
   rounded_floating_app_bar: ^0.1.0
   font_awesome_flutter: ^8.5.0
   carousel_pro: ^1.0.0
+  flutter_email_sender: ^3.0.1
+
 
 
 

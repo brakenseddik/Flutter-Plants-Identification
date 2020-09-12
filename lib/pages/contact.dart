@@ -1,4 +1,9 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -6,123 +11,129 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-//  Formk<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  List<String> attachments = [];
+  bool isHTML = false;
+
+  final _recipientController = TextEditingController(
+    text: 'example@example.com',
+  );
+
+  final _subjectController = TextEditingController(text: 'The subject');
+
+  final _bodyController = TextEditingController(
+    text: 'Mail body.',
+  );
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> send() async {
+    final Email email = Email(
+      body: _bodyController.text,
+      subject: _subjectController.text,
+      recipients: [_recipientController.text],
+      attachmentPaths: attachments,
+      isHTML: isHTML,
+    );
+
+    String platformResponse;
+
+    try {
+      await FlutterEmailSender.send(email);
+      platformResponse = 'success';
+    } catch (error) {
+      platformResponse = error.toString();
+    }
+
+    if (!mounted) return;
+
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text(platformResponse),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Contact Us'),
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            padding: EdgeInsets.only(top: 30),
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              TextFormField(
-                validator: (value) {
-                  if (value.length < 6) return 'name too short';
-                },
-                decoration: InputDecoration(
-                  labelText: "Name",
-                  filled: true,
-                  fillColor: Color(0xFFE7E7E7),
-                  //hintText: 'Username',
-                  contentPadding:
-                      const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(7),
+    return MaterialApp(
+      home: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          title: Text('Contact Us'),
+          actions: <Widget>[
+            IconButton(
+              onPressed: send,
+              icon: Icon(Icons.send),
+            )
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _recipientController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Recipient',
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                validator: (value) {
-                  Pattern pattern =
-                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                  RegExp regex = new RegExp(pattern);
-                  if (!regex.hasMatch(value))
-                    return 'Enter Valid Email';
-                  else
-                    return null;
-                },
-                decoration: InputDecoration(
-                  labelText: "E-mail",
-                  filled: true,
-                  fillColor: Color(0xFFE7E7E7),
-                  //hintText: 'Username',
-                  contentPadding:
-                      const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(7),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _subjectController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Subject',
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value.isEmpty) return 'Enter your message';
-                },
-                decoration: InputDecoration(
-                  labelText: "Message",
-                  filled: true,
-                  fillColor: Color(0xFFE7E7E7),
-                  //hintText: 'Username',
-                  contentPadding:
-                      const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(7),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _bodyController,
+                    maxLines: 10,
+                    decoration: InputDecoration(
+                        labelText: 'Body', border: OutlineInputBorder()),
                   ),
                 ),
-                keyboardType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-                maxLines: 10,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Container(
-                width: double.infinity,
-                height: 50,
-                child: RaisedButton(
-                  color: Colors.greenAccent,
-                  child: Text('Send'),
-                  onPressed: () {},
+                CheckboxListTile(
+                  title: Text('HTML'),
+                  onChanged: (bool value) {
+                    setState(() {
+                      isHTML = value;
+                    });
+                  },
+                  value: isHTML,
                 ),
-              )
-            ],
+                ...attachments.map(
+                  (item) => Text(
+                    item,
+                    overflow: TextOverflow.fade,
+                  ),
+                ),
+              ],
+            ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          icon: Icon(Icons.camera),
+          label: Text('Add Image'),
+          onPressed: _openImagePicker,
         ),
       ),
     );
   }
 
-  void validateForm() async {
-    if (_formKey.currentState.validate()) {
-      print('e');
-    }
+  void _openImagePicker() async {
+    File pick = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      attachments.add(pick.path);
+    });
   }
 }
