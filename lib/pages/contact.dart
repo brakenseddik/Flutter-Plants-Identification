@@ -15,7 +15,7 @@ class _ContactState extends State<Contact> {
   bool isHTML = false;
 
   final _recipientController = TextEditingController(
-    text: 'example@example.com',
+    text: 'dzmidou95@gmail.com',
   );
 
   final _subjectController = TextEditingController(text: 'The subject');
@@ -32,7 +32,7 @@ class _ContactState extends State<Contact> {
       subject: _subjectController.text,
       recipients: [_recipientController.text],
       attachmentPaths: attachments,
-      isHTML: isHTML,
+      // isHTML: isHTML,
     );
 
     String platformResponse;
@@ -76,16 +76,6 @@ class _ContactState extends State<Contact> {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: TextField(
-                    controller: _recipientController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Recipient',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
                     controller: _subjectController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -102,7 +92,7 @@ class _ContactState extends State<Contact> {
                         labelText: 'Body', border: OutlineInputBorder()),
                   ),
                 ),
-                CheckboxListTile(
+                /* CheckboxListTile(
                   title: Text('HTML'),
                   onChanged: (bool value) {
                     setState(() {
@@ -116,7 +106,7 @@ class _ContactState extends State<Contact> {
                     item,
                     overflow: TextOverflow.fade,
                   ),
-                ),
+                ),*/
               ],
             ),
           ),
