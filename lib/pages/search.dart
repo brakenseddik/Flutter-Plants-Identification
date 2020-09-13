@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     contentPadding: EdgeInsets.only(left: 25.0),
                     hintText: 'Search by name',
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),
                 ),
@@ -114,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () =>
                         navigateDetail(tempSearchStore[index], context),
                     child: Card(
+                      color: Colors.white.withOpacity(0.9),
                       child: ListTile(
                         leading: CircleAvatar(
                           radius: 30,

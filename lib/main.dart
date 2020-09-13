@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{'/profile': (context) => Profile()},
       title: 'Planteex',
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        appBarTheme: AppBarTheme(color: Colors.greenAccent),
+        primarySwatch: Colors.green,
+        accentColor: Colors.greenAccent,
       ),
       home: Splash(),
     );

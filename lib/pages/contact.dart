@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:project_fin_etude/styles/styles.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -53,46 +54,62 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          title: Text('Contact Us'),
-          actions: <Widget>[
-            IconButton(
-              onPressed: send,
-              icon: Icon(Icons.send),
-            )
-          ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      key: _scaffoldKey,
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        title: Text(
+          'Contact Us',
+          style: kPagetitle,
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                    controller: _subjectController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Subject',
-                    ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: send,
+            icon: Icon(
+              Icons.send,
+              color: Colors.lightGreenAccent,
+            ),
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: _subjectController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Subject',
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                    controller: _bodyController,
-                    maxLines: 10,
-                    decoration: InputDecoration(
-                        labelText: 'Body', border: OutlineInputBorder()),
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: _bodyController,
+                  maxLines: 10,
+                  decoration: InputDecoration(
+                      labelText: 'Body', border: OutlineInputBorder()),
                 ),
-                /* CheckboxListTile(
+              ),
+              /* CheckboxListTile(
                   title: Text('HTML'),
                   onChanged: (bool value) {
                     setState(() {
@@ -107,15 +124,14 @@ class _ContactState extends State<Contact> {
                     overflow: TextOverflow.fade,
                   ),
                 ),*/
-              ],
-            ),
+            ],
           ),
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          icon: Icon(Icons.camera),
-          label: Text('Add Image'),
-          onPressed: _openImagePicker,
-        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.camera),
+        label: Text('Add Image'),
+        onPressed: _openImagePicker,
       ),
     );
   }
