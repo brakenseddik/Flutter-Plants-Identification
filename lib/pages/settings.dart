@@ -64,8 +64,13 @@ class _SettingsState extends State<Settings> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
         child: SingleChildScrollView(
           child: Column(
-            //  mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Account', style: kPagetitle),
+              ),
               Card(
                 child: ListTile(
                   leading: Icon(
@@ -78,6 +83,10 @@ class _SettingsState extends State<Settings> {
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('About', style: kPagetitle),
               ),
               Card(
                 child: Column(
@@ -92,7 +101,7 @@ class _SettingsState extends State<Settings> {
                             color: Colors.greenAccent,
                           ),
                           txt: Text(
-                            'Help & Support',
+                            'About Me',
                             style: TextStyle(
                               fontSize: 22,
                             ),
@@ -128,19 +137,6 @@ class _SettingsState extends State<Settings> {
                         ),
                         txt: Text(
                           'Rate us',
-                          style: TextStyle(fontSize: 22),
-                        )),
-                    Divider(
-                      color: Colors.black12,
-                    ),
-                    listBuilder(
-                        ico: Icon(
-                          Icons.feedback,
-                          size: 22,
-                          color: Colors.greenAccent,
-                        ),
-                        txt: Text(
-                          'Report',
                           style: TextStyle(fontSize: 22),
                         )),
                     Divider(

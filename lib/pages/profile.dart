@@ -44,7 +44,7 @@ class _ProfileState extends State<Profile> {
                             child: Carousel(
                               dotBgColor: Colors.transparent,
                               dotColor: Colors.greenAccent,
-                              boxFit: BoxFit.fill,
+                              boxFit: BoxFit.cover,
                               images: [
                                 NetworkImage(widget.post.data['album'][0]),
                                 NetworkImage(widget.post.data['album'][1]),
@@ -168,6 +168,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     widget.post.data['history'],
+                                    textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: Colors.black38, fontSize: 18),
                                   ),
@@ -204,6 +205,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     widget.post.data['description'],
+                                    textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: Colors.black38, fontSize: 18),
                                   ),
@@ -240,6 +242,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     widget.post.data['emploi'],
+                                    textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: Colors.black38, fontSize: 18),
                                   ),
@@ -254,10 +257,12 @@ class _ProfileState extends State<Profile> {
                 }),
               )
             : Center(
-                child: Image(
-                  image: AssetImage('images/offline-icon-6.png'),
-                  height: 300,
-                  width: 300,
+                child: Flexible(
+                  child: Image(
+                    image: AssetImage('images/offline-icon-6.png'),
+                    height: 250,
+                    width: 250,
+                  ),
                 ),
               ),
       ),
