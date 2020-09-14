@@ -106,7 +106,7 @@ class _ContactState extends State<Contact> {
                   controller: _bodyController,
                   maxLines: 10,
                   decoration: InputDecoration(
-                      labelText: 'Body', border: OutlineInputBorder()),
+                      labelText: 'Message', border: OutlineInputBorder()),
                 ),
               ),
               /* CheckboxListTile(
