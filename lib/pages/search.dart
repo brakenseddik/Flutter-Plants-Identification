@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () =>
                         navigateDetail(tempSearchStore[index], context),
                     child: Card(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white,
                       child: ListTile(
                         leading: CircleAvatar(
                           radius: 30,

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/models/users.dart';
 import 'package:project_fin_etude/widgets/bezierContainer.dart';
 import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,9 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  User _userServices = User();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   bool _autoValidate = false;
   String _email;
   String _password;
@@ -149,7 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _submitButton() {
     return InkWell(
-      onTap: createUser,
+      onTap: validateForm,
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: 15),
@@ -302,6 +306,37 @@ class _SignUpPageState extends State<SignUpPage> {
       setState(() {
         _autoValidate = true;
       });
+    }
+  }
+
+  Future validateForm() async {
+    FormState formState = _formKey.currentState;
+    if (formState.validate()) {
+      formState.save();
+      try {
+        FirebaseUser user =
+            await firebaseAuth.currentUser().catchError((e) => {print(e)});
+
+        // print('user is Null');
+        firebaseAuth
+            .createUserWithEmailAndPassword(
+                email: _email.trim(), password: _password.trim())
+            .then((user) {
+          print('user signed in storing in db');
+          _userServices.createUser({
+            "username": _name.trim(),
+            "email": _email.trim(),
+            "userId": user.user.uid,
+          });
+        }).catchError((err) => {print(err.toString())});
+        Navigator.of(context).push(
+          CupertinoPageRoute(
+            builder: (context) => LoginPage(title: user),
+          ),
+        );
+      } catch (e) {
+        print(e.toString());
+      }
     }
   }
 
