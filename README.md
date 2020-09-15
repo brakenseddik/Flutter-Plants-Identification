@@ -9,4 +9,6 @@ plant identification app written with <3 flutter & firebase
 * Register page
 * Search for plants
 * Add to favorites
-[!picture](https://github.com/brakenseddik/plants_identification/blob/master/images/smartmockups_kf2shxcf.png?raw=true) 
+</br>
+![picture](https://github.com/brakenseddik/plants_identification/blob/master/images/smartmockups_kf2shxcf.png?raw=true) 
+![picture](https://github.com/brakenseddik/plants_identification/blob/master/images/smartmockups_kf2sijpe.png?raw=true) 
