@@ -66,7 +66,7 @@ class _ContactState extends State<Contact> {
             onPressed: () {
               Navigator.pop(context);
             }),
-        elevation: 0.0,
+        // elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
           'Contact Us',
@@ -133,6 +133,7 @@ class _ContactState extends State<Contact> {
         label: Text('Add Image'),
         onPressed: _openImagePicker,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

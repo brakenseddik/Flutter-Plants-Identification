@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_fin_etude/provider/fav_status.dart' show Fav;
-import 'package:provider/provider.dart';
 import 'package:project_fin_etude/styles/styles.dart';
+import 'package:provider/provider.dart';
+
 import 'profile.dart';
 
 class Chat extends StatefulWidget {
@@ -84,7 +85,10 @@ class _ChatState extends State<Chat> {
             future: getUserLikedData(),
             builder: (_, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                    child: CircularProgressIndicator(
+                  strokeWidth: 1.5,
+                ));
               }
               final showData =
                   (snapshot.data as Map<String, dynamic>).values.toList();

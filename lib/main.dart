@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:project_fin_etude/pages/profile.dart';
 import 'package:project_fin_etude/pages/welcome/splashScreen.dart';
 import 'package:project_fin_etude/provider/fav_status.dart';
+import 'package:project_fin_etude/provider/loggedUser.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(
         create: (context) => Fav(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => loggedUser(),
       ),
     ], child: MyApp()));
 
@@ -19,7 +23,10 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{'/profile': (context) => Profile()},
       title: 'Planteex',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Colors.greenAccent),
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black),
+          color: Colors.greenAccent,
+        ),
         primarySwatch: Colors.green,
         accentColor: Colors.greenAccent,
       ),

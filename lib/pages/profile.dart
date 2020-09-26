@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_widget/connectivity_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:project_fin_etude/provider/fav_status.dart';
 import 'package:project_fin_etude/styles/styles.dart';
 import 'package:provider/provider.dart';
-import 'package:connectivity_widget/connectivity_widget.dart';
 
 class Profile extends StatefulWidget {
   final DocumentSnapshot post;

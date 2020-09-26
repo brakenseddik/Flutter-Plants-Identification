@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/provider/fav_status.dart';
 import 'package:project_fin_etude/pages/profile.dart';
-import 'package:provider/provider.dart';
+import 'package:project_fin_etude/provider/fav_status.dart';
 import 'package:project_fin_etude/styles/styles.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(Dashboard());
 
@@ -26,17 +26,6 @@ class DashboardState extends State<Dashboard> {
   }
 
   @override
-  navigatDetail(DocumentSnapshot post) {
-    //print(post.data);
-    Navigator.of(context).push(
-      CupertinoPageRoute(
-        builder: (context) => Profile(
-          post: post,
-        ),
-      ),
-    );
-  }
-
   void initState() {
     super.initState();
     Fav provideFav = Provider.of<Fav>(context, listen: false);
@@ -71,7 +60,9 @@ class DashboardState extends State<Dashboard> {
                   );
                 } else if (!snapshot.hasData) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      strokeWidth: 1.5,
+                    ),
                   );
                 }
 
@@ -182,6 +173,17 @@ class DashboardState extends State<Dashboard> {
               })
         ]);
       })),
+    );
+  }
+
+  navigatDetail(DocumentSnapshot post) {
+    //print(post.data);
+    Navigator.of(context).push(
+      CupertinoPageRoute(
+        builder: (context) => Profile(
+          post: post,
+        ),
+      ),
     );
   }
 }

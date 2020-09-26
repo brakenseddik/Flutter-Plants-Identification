@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/models/users.dart';
-import 'package:project_fin_etude/widgets/bezierContainer.dart';
-import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_fin_etude/models/users.dart';
+import 'package:project_fin_etude/pages/authentification/login.dart';
+import 'package:project_fin_etude/widgets/bezierContainer.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key, this.title}) : super(key: key);
@@ -215,7 +215,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'F',
+          text: 'P',
           style: GoogleFonts.portLligatSans(
             textStyle: Theme.of(context).textTheme.display1,
             fontSize: 30,
@@ -224,11 +224,11 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           children: [
             TextSpan(
-              text: 'LO',
+              text: 'LAN',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'REEX',
+              text: 'TEEX',
               style: TextStyle(color: Color(0xff11998e), fontSize: 30),
             ),
           ]),
@@ -297,7 +297,7 @@ class _SignUpPageState extends State<SignUpPage> {
     )));
   }
 
-  void _validateInputs() {
+  /* void _validateInputs() {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
       _formKey.currentState.save();
@@ -307,7 +307,7 @@ class _SignUpPageState extends State<SignUpPage> {
         _autoValidate = true;
       });
     }
-  }
+  }*/
 
   Future validateForm() async {
     FormState formState = _formKey.currentState;

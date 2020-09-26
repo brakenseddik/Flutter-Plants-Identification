@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:project_fin_etude/pages/details.dart';
 import 'package:project_fin_etude/pages/profile.dart';
 import 'package:connectivity_widget/connectivity_widget.dart';
+import 'package:project_fin_etude/provider/loggedUser.dart';
+import 'package:provider/provider.dart';
 import 'dashboard.dart';
 import 'saved.dart';
 import 'search.dart';
@@ -37,6 +39,8 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    // Provider.of<loggedUser>(context).getCurrentUser();
+
     ConnectivityUtils.initialize(
         serverToPing:
             "https://gist.githubusercontent.com/Vanethos/dccc4b4605fc5c5aa4b9153dacc7391c/raw/355ccc0e06d0f84fdbdc83f5b8106065539d9781/gistfile1.txt",
@@ -229,7 +233,8 @@ class _HomeState extends State<Home> {
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Colors.greenAccent,
-            shape: RoundedRectangleBorder(),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20))),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[

@@ -78,13 +78,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.5"
-  contactus:
-    dependency: "direct dev"
-    description:
-      name: contactus
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.4"
   convert:
     dependency: transitive
     description:
@@ -469,41 +462,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  typicons_flutter:
-    dependency: transitive
-    description:
-      name: typicons_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.1"
-  url_launcher:
-    dependency: transitive
-    description:
-      name: url_launcher
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.4.5"
-  url_launcher_macos:
-    dependency: transitive
-    description:
-      name: url_launcher_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1+5"
-  url_launcher_platform_interface:
-    dependency: transitive
-    description:
-      name: url_launcher_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.6"
-  url_launcher_web:
-    dependency: transitive
-    description:
-      name: url_launcher_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1+4"
   vector_math:
     dependency: transitive
     description:

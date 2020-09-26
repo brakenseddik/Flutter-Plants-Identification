@@ -28,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Color(0xFF14C9CB),
+        color: isActive ? Colors.white : Color(0xFF98FB98),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -67,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ))
                     },
                     child: Text(
-                      'Skip',
+                      'Passer',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
@@ -95,7 +95,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/onboarding0.png',
+                                  'images/1.png',
                                 ),
                                 height: 250.0,
                                 width: 250.0,
@@ -103,13 +103,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Connect people\naround the world',
+                              'Cree votre proprre collection de  plantes ',
                               style: kTitleStyle,
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 15.0),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+                              'Planteex permet d\'ajouter vos plantes préférées à votre collection .',
                               style: kSubtitleStyle,
                               textAlign: TextAlign.center,
                             ),
@@ -125,7 +125,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/onboarding1.png',
+                                  'images/flower.png',
                                 ),
                                 height: 250.0,
                                 width: 250.0,
@@ -133,13 +133,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Live your life smarter\nwith us!',
+                              'Identifiez autant de plantes que vous voulez',
                               style: kTitleStyle,
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 15.0),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+                              'Faire identifiez des plantes que vous ne connaisez pas par noutre service',
                               style: kSubtitleStyle,
                               textAlign: TextAlign.center,
                             ),
@@ -155,7 +155,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/onboarding2.png',
+                                  'images/plant.png',
                                 ),
                                 height: 250.0,
                                 width: 250.0,
@@ -163,13 +163,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Get a new experience\nof imagination',
+                              'Explorer un Encyclopédie de plantes médicinales',
                               style: kTitleStyle,
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 15.0),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
+                              'Explorer un catalogue de plantes médicinales les plus utilisées',
                               style: kSubtitleStyle,
                               textAlign: TextAlign.center,
                             ),
@@ -199,7 +199,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Text(
-                                  'Next',
+                                  'Suivant',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18.0,

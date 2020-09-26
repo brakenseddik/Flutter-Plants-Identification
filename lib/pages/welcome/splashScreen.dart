@@ -1,8 +1,8 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:project_fin_etude/pages/welcome/onBoarding.dart';
-import 'package:project_fin_etude/pages/welcome/onBoardingScreen.dart';
 import 'package:project_fin_etude/styles/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,7 +49,7 @@ class _SplashState extends State<Splash> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Text('FLOREEX', style: kHeaderTitle),
+                Text('PLANTEEX', style: kHeaderTitle),
                 Divider(
                   height: 20,
                 ),

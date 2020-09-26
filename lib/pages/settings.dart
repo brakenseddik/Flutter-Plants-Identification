@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:project_fin_etude/pages/aboutme.dart';
 import 'package:project_fin_etude/pages/authentification/login.dart';
 import 'package:project_fin_etude/pages/contact.dart';
+import 'package:project_fin_etude/provider/loggedUser.dart';
 import 'package:project_fin_etude/styles/styles.dart';
+import 'package:provider/provider.dart';
 
 final _auth = FirebaseAuth.instance;
-
 FirebaseUser loggedInUser;
 
 class Settings extends StatefulWidget {
@@ -16,17 +17,19 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   void initState() {
-    // TODO: implement initState
     super.initState();
+    //Provider.of<loggedUser>(context).getCurrentUser();
     getCurrentUser();
   }
 
-  void getCurrentUser() async {
+  getCurrentUser() async {
     try {
       final user = await _auth.currentUser();
       if (user != null) {
-        loggedInUser = user;
-        print(loggedInUser.email);
+        setState(() {
+          loggedInUser = user;
+          print(loggedInUser.email);
+        });
       }
     } catch (e) {
       print(e);
@@ -45,6 +48,8 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
+    //FirebaseUser loggedInUser =  Provider.of<loggedUser>(context) as FirebaseUser;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -61,16 +66,17 @@ class _SettingsState extends State<Settings> {
       ),
       // backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 8.0, left: 15, bottom: 8.0),
                 child: Text('Account', style: kPagetitle),
               ),
-              Card(
+              Container(
+                color: Colors.white,
                 child: ListTile(
                   leading: Icon(
                     Icons.person,
@@ -84,15 +90,16 @@ class _SettingsState extends State<Settings> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 8.0, left: 15, bottom: 8.0),
                 child: Text('About', style: kPagetitle),
               ),
-              Card(
+              Container(
+                color: Colors.white,
                 child: Column(
                   children: [
                     GestureDetector(
                       onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AboutMe())),
+                          MaterialPageRoute(builder: (context) => AppInfo())),
                       child: listBuilder(
                           ico: Icon(
                             Icons.help,
@@ -100,14 +107,14 @@ class _SettingsState extends State<Settings> {
                             color: Colors.greenAccent,
                           ),
                           txt: Text(
-                            'About Me',
+                            'App Info',
                             style: TextStyle(
                               fontSize: 22,
                             ),
                           )),
                     ),
                     Divider(
-                      color: Colors.black12,
+                      color: Colors.black38,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -154,13 +161,17 @@ class _SettingsState extends State<Settings> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               GestureDetector(
                 onTap: () {
                   _auth.signOut().whenComplete(() => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => LoginPage())));
                 },
-                child: Card(
+                child: Container(
+                  color: Colors.white,
                   child: listBuilder(
                       ico: Icon(
                         Icons.exit_to_app,

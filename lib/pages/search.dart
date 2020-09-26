@@ -89,8 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     initiateSearch(val);
                   },
                   decoration: InputDecoration(
+                    fillColor: Color(0xFFDCDCDC).withOpacity(0.5),
+                    filled: true,
                     prefixIcon: IconButton(
-                      color: Colors.green,
+                      color: Colors.greenAccent,
                       icon: Icon(Icons.search),
                       iconSize: 24.0,
                       onPressed: () {
@@ -100,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     contentPadding: EdgeInsets.only(left: 25.0),
                     hintText: 'Search by name',
                     border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),

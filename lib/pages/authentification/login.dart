@@ -1,10 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/pages/authentification/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_fin_etude/widgets/bezierContainer.dart';
+import 'package:project_fin_etude/pages/authentification/signup.dart';
 import 'package:project_fin_etude/pages/home.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:project_fin_etude/widgets/bezierContainer.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'F',
+          text: 'P',
           style: GoogleFonts.portLligatSans(
             textStyle: Theme.of(context).textTheme.display2,
             fontSize: 30,
@@ -181,11 +181,11 @@ class _LoginPageState extends State<LoginPage> {
           ),
           children: [
             TextSpan(
-              text: 'LO',
+              text: 'LAN',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'REEX',
+              text: 'TEEX',
               style: TextStyle(color: Color(0xff11998e), fontSize: 30),
             ),
           ]),
@@ -241,7 +241,9 @@ class _LoginPageState extends State<LoginPage> {
         key: _scaffoldKey,
         body: loading
             ? Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  strokeWidth: 1.5,
+                ),
               )
             : SingleChildScrollView(
                 child: Container(
