@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
-class loggedUser with ChangeNotifier {
+class LoggedUser with ChangeNotifier {
   FirebaseUser loggedInUser;
   final _auth = FirebaseAuth.instance;
 

@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:project_fin_etude/styles/styles.dart';
+import 'package:project_fin_etude/constants/constants.dart';
 
 class Contact extends StatefulWidget {
   @override

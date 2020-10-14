@@ -24,7 +24,10 @@ dependencies:
   cloud_firestore:
   tflite: ^1.0.5
   image_picker:
-  sk_onboarding_screen: ^1.0.1
+  rounded_floating_app_bar: ^0.1.0
+  font_awesome_flutter: ^8.5.0
+  carousel_pro: ^1.0.0
+  flutter_email_sender: ^3.0.1
 
   flutter:
     sdk: flutter
@@ -33,11 +36,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  rounded_floating_app_bar: ^0.1.0
-  font_awesome_flutter: ^8.5.0
-  carousel_pro: ^1.0.0
-  flutter_email_sender: ^3.0.1
-  flare_flutter: ^2.0.6
+  
 
 
 

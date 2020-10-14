@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_fin_etude/pages/authentification/signup.dart';
-import 'package:project_fin_etude/pages/home.dart';
-import 'package:project_fin_etude/widgets/bezierContainer.dart';
+import 'package:project_fin_etude/pages/auth/signup.dart';
+import 'package:project_fin_etude/pages/home_page.dart';
+import 'package:project_fin_etude/components/bezierContainer.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -174,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
       text: TextSpan(
           text: 'P',
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.display2,
+            textStyle: Theme.of(context).textTheme.headline1,
             fontSize: 30,
             fontWeight: FontWeight.w700,
             color: Color(0xff11998e),

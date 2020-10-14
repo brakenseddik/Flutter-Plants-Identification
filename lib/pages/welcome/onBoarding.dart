@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project_fin_etude/pages/authentification/login.dart';
-import 'package:project_fin_etude/styles/styles.dart';
+import 'package:project_fin_etude/constants//constants.dart';
+import 'package:project_fin_etude/pages/auth/login.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -54,7 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 40.0),
+            padding: EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -88,92 +88,97 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.all(30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Center(
-                              child: Image(
-                                image: AssetImage(
-                                  'images/1.png',
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Center(
+                                child: Image(
+                                  image: AssetImage(
+                                    'images/1.png',
+                                  ),
+                                  height: 250.0,
+                                  width: 250.0,
                                 ),
-                                height: 250.0,
-                                width: 250.0,
                               ),
-                            ),
-                            SizedBox(height: 30.0),
-                            Text(
-                              'Cree votre proprre collection de  plantes ',
-                              style: kTitleStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 15.0),
-                            Text(
-                              'Planteex permet d\'ajouter vos plantes préférées à votre collection .',
-                              style: kSubtitleStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
+                              SizedBox(height: 30.0),
+                              Text(
+                                'Cree votre proprre collection de  plantes ',
+                                style: kTitleStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 15.0),
+                              Text(
+                                'Planteex permet d\'ajouter vos plantes préférées à votre collection .',
+                                style: kSubtitleStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Center(
-                              child: Image(
-                                image: AssetImage(
-                                  'images/flower.png',
+                          padding: EdgeInsets.all(30),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Center(
+                                  child: Image(
+                                    image: AssetImage(
+                                      'images/flower.png',
+                                    ),
+                                    height: 250.0,
+                                    width: 250.0,
+                                  ),
                                 ),
-                                height: 250.0,
-                                width: 250.0,
-                              ),
+                                SizedBox(height: 30.0),
+                                Text(
+                                  'Identifiez autant de plantes que vous voulez',
+                                  style: kTitleStyle,
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 15.0),
+                                Text(
+                                  'Faire identifiez des plantes que vous ne connaisez pas par noutre service',
+                                  style: kSubtitleStyle,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 30.0),
-                            Text(
-                              'Identifiez autant de plantes que vous voulez',
-                              style: kTitleStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 15.0),
-                            Text(
-                              'Faire identifiez des plantes que vous ne connaisez pas par noutre service',
-                              style: kSubtitleStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ),
+                          )),
                       Padding(
                         padding: EdgeInsets.all(30.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Center(
-                              child: Image(
-                                image: AssetImage(
-                                  'images/plant.png',
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Center(
+                                child: Image(
+                                  image: AssetImage(
+                                    'images/plant.png',
+                                  ),
+                                  height: 250.0,
+                                  width: 250.0,
                                 ),
-                                height: 250.0,
-                                width: 250.0,
                               ),
-                            ),
-                            SizedBox(height: 30.0),
-                            Text(
-                              'Explorer un Encyclopédie de plantes médicinales',
-                              style: kTitleStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 15.0),
-                            Text(
-                              'Explorer un catalogue de plantes médicinales les plus utilisées',
-                              style: kSubtitleStyle,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
+                              SizedBox(height: 30.0),
+                              Text(
+                                'Explorer un Encyclopédie de plantes médicinales',
+                                style: kTitleStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 15.0),
+                              Text(
+                                'Explorer un catalogue de plantes médicinales les plus utilisées',
+                                style: kSubtitleStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

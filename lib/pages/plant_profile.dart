@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_widget/connectivity_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/constants/constants.dart';
 import 'package:project_fin_etude/provider/fav_status.dart';
-import 'package:project_fin_etude/styles/styles.dart';
 import 'package:provider/provider.dart';
 
 class Profile extends StatefulWidget {

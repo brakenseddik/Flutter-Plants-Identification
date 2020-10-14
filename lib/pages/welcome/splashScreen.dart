@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/pages/authentification/login.dart';
+import 'package:project_fin_etude/constants/constants.dart';
+import 'package:project_fin_etude/pages/auth/login.dart';
 import 'package:project_fin_etude/pages/welcome/onBoarding.dart';
-import 'package:project_fin_etude/styles/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
@@ -27,9 +27,8 @@ class _SplashState extends State<Splash> {
   }
 
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(new Duration(seconds: 6), () {
+    Timer(new Duration(seconds: 4), () {
       checkFirstSeen();
     });
   }

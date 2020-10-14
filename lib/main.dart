@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/pages/profile.dart';
+import 'package:project_fin_etude/pages/plant_profile.dart';
 import 'package:project_fin_etude/pages/welcome/splashScreen.dart';
 import 'package:project_fin_etude/provider/fav_status.dart';
-import 'package:project_fin_etude/provider/loggedUser.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(
         create: (context) => Fav(),
-      ),
-      ChangeNotifierProvider(
-        create: (context) => loggedUser(),
       ),
     ], child: MyApp()));
 

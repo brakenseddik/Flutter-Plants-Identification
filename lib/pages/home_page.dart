@@ -4,12 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:project_fin_etude/pages/details.dart';
-import 'package:project_fin_etude/pages/profile.dart';
+import 'package:project_fin_etude/pages/plant_details.dart';
+import 'package:project_fin_etude/pages/plant_profile.dart';
 import 'package:connectivity_widget/connectivity_widget.dart';
-import 'package:project_fin_etude/provider/loggedUser.dart';
-import 'package:provider/provider.dart';
-import 'dashboard.dart';
+import 'activity.dart';
 import 'saved.dart';
 import 'search.dart';
 import 'settings.dart';
@@ -23,18 +21,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // Properties & Variables needed
+  // ignore: unused_field
   File _image;
 
   int currentTab = 0; // to keep track of active tab index
   final List<Widget> screens = [
-    Dashboard(),
-    Chat(),
+    Activity(),
+    Saved(),
     Search(),
     Settings(),
     Profile()
   ]; // to store nested tabs
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Dashboard(); // Our first view in viewport
+  Widget currentScreen = Activity(); // Our first view in viewport
 
   @override
   void initState() {
@@ -91,7 +90,7 @@ class _HomeState extends State<Home> {
                           ? () {
                               setState(() {
                                 currentScreen =
-                                    Dashboard(); // if user taps on this dashboard tab will be active
+                                    Activity(); // if user taps on this dashboard tab will be active
                                 currentTab = 0;
                               });
                             }
@@ -122,7 +121,7 @@ class _HomeState extends State<Home> {
                           ? () {
                               setState(() {
                                 currentScreen =
-                                    Chat(); // if user taps on this dashboard tab will be active
+                                    Saved(); // if user taps on this dashboard tab will be active
                                 currentTab = 1;
                               });
                             }

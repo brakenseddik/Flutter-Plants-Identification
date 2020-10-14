@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_fin_etude/constants/constants.dart';
 import 'package:project_fin_etude/models/searchservice.dart';
-import 'package:project_fin_etude/pages/profile.dart';
-import 'package:project_fin_etude/styles/styles.dart';
-
-void main() => runApp(new Search());
+import 'package:project_fin_etude/pages/plant_profile.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -89,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     initiateSearch(val);
                   },
                   decoration: InputDecoration(
-                    fillColor: Color(0xFFDCDCDC).withOpacity(0.5),
+                    fillColor: Color(0xFFf9f9f7),
                     filled: true,
                     prefixIcon: IconButton(
                       color: Colors.greenAccent,
@@ -109,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               SizedBox(height: 10.0),
-              ListView.separated(
+              ListView.builder(
                 padding: EdgeInsets.only(left: 10.0, right: 10.0),
                 itemCount: tempSearchStore.length,
                 itemBuilder: (context, index) {
@@ -135,7 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 shrinkWrap: true,
-                separatorBuilder: (context, index) => Divider(),
               ),
             ],
           );

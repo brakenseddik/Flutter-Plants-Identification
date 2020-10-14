@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class AppInfo extends StatelessWidget {
+class AppInfo extends StatefulWidget {
+  @override
+  _AppInfoState createState() => _AppInfoState();
+}
+
+class _AppInfoState extends State<AppInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +99,20 @@ class AppInfo extends StatelessWidget {
                           style: TextStyle(color: Colors.black54, fontSize: 18),
                         ),
                       ]),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Material(
+                  elevation: 5.0,
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(7)),
+                  child: Container(
+                    height: 50,
+                    child: Center(
+                      child: Text('Developed 🖤 By: @brakenseddik'),
                     ),
                   ),
                 )

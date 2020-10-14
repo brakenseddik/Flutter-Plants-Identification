@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:project_fin_etude/pages/aboutme.dart';
-import 'package:project_fin_etude/pages/authentification/login.dart';
-import 'package:project_fin_etude/pages/contact.dart';
-import 'package:project_fin_etude/provider/loggedUser.dart';
-import 'package:project_fin_etude/styles/styles.dart';
-import 'package:provider/provider.dart';
+import 'package:project_fin_etude/constants/constants.dart';
+import 'package:project_fin_etude/pages/app_info.dart';
+import 'package:project_fin_etude/pages/auth/login.dart';
+import 'package:project_fin_etude/pages/contact_us.dart';
 
 final _auth = FirebaseAuth.instance;
 FirebaseUser loggedInUser;
@@ -84,7 +82,7 @@ class _SettingsState extends State<Settings> {
                     color: Colors.greenAccent,
                   ),
                   title: Text(
-                    loggedInUser.email,
+                    loggedInUser != null ? loggedInUser.email : '',
                     style: TextStyle(fontSize: 22),
                   ),
                 ),

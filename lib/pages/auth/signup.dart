@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project_fin_etude/models/users.dart';
-import 'package:project_fin_etude/pages/authentification/login.dart';
-import 'package:project_fin_etude/widgets/bezierContainer.dart';
+import 'package:project_fin_etude/pages/auth/login.dart';
+import 'package:project_fin_etude/components/bezierContainer.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key, this.title}) : super(key: key);
@@ -217,7 +217,7 @@ class _SignUpPageState extends State<SignUpPage> {
       text: TextSpan(
           text: 'P',
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.display1,
+            textStyle: Theme.of(context).textTheme.headline1,
             fontSize: 30,
             fontWeight: FontWeight.w700,
             color: Color(0xff11998e),
