@@ -77,7 +77,7 @@ class _ContactState extends State<Contact> {
             onPressed: send,
             icon: Icon(
               Icons.send,
-              color: Colors.lightGreenAccent,
+              color: Colors.greenAccent,
             ),
           )
         ],

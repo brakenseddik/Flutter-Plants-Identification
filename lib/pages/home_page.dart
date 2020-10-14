@@ -1,12 +1,13 @@
 import 'dart:io';
 
+import 'package:connectivity_widget/connectivity_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:project_fin_etude/pages/plant_details.dart';
 import 'package:project_fin_etude/pages/plant_profile.dart';
-import 'package:connectivity_widget/connectivity_widget.dart';
+
 import 'activity.dart';
 import 'saved.dart';
 import 'search.dart';
@@ -58,7 +59,7 @@ class _HomeState extends State<Home> {
               )
             : Center(
                 child: Image(
-                  image: AssetImage('images/offline-icon-6.png'),
+                  image: AssetImage('assets/IMGs/offline-icon-6.png'),
                   height: 300,
                   width: 300,
                 ),

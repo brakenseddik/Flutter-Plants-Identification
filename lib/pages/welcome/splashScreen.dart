@@ -39,7 +39,7 @@ class _SplashState extends State<Splash> {
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/splash.jpg"),
+              image: AssetImage('assets/IMGs/splash.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -49,10 +49,10 @@ class _SplashState extends State<Splash> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text('PLANTEEX', style: kHeaderTitle),
-                SizedBox(
+                Divider(
                   height: 20,
                 ),
-                Text('Explore medical plants', style: kbigTitle),
+                Text('Explore medicinal plants', style: kbigTitle),
               ],
             ),
           )),

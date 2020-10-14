@@ -26,11 +26,14 @@ class _AppInfoState extends State<AppInfo> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image(
-                            width: 75,
-                            height: 75,
-                            image: AssetImage(
-                              'images/playstore.png',
+                          Opacity(
+                            opacity: 0.82,
+                            child: Image(
+                              width: 75,
+                              height: 75,
+                              image: AssetImage(
+                                'assets/IMGs/playstore.png',
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -65,7 +68,7 @@ class _AppInfoState extends State<AppInfo> {
                         // colorFilter: ColorFiltered(colorFilter: C),
                         scale: 0.1,
                         fit: BoxFit.cover,
-                        image: AssetImage('images/splash.jpg')),
+                        image: AssetImage('assets/IMGs/splash.jpg')),
                   ),
                 ),
                 SizedBox(
