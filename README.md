@@ -1,4 +1,4 @@
-# project_fin_etude
+# Plants Identification mobile application
 
 plant identification app written with <3 flutter & firebase
 
