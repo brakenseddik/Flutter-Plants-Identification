@@ -28,7 +28,7 @@ class _SplashState extends State<Splash> {
 
   void initState() {
     super.initState();
-    Timer(new Duration(seconds: 4), () {
+    Timer(new Duration(seconds: 5), () {
       checkFirstSeen();
     });
   }
@@ -49,7 +49,7 @@ class _SplashState extends State<Splash> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text('PLANTEEX', style: kHeaderTitle),
-                Divider(
+                SizedBox(
                   height: 20,
                 ),
                 Text('Explore medical plants', style: kbigTitle),

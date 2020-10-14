@@ -90,7 +90,7 @@ class ActivityState extends State<Activity> {
                                           2.4,
                                       fit: BoxFit.cover,
                                     ),
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   SizedBox(
                                     width: 15,

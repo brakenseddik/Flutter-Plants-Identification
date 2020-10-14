@@ -62,6 +62,8 @@ class _AppInfoState extends State<AppInfo> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(7)),
                     image: DecorationImage(
+                        // colorFilter: ColorFiltered(colorFilter: C),
+                        scale: 0.1,
                         fit: BoxFit.cover,
                         image: AssetImage('images/splash.jpg')),
                   ),

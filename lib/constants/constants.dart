@@ -30,7 +30,7 @@ const kbigTitle = TextStyle(
     fontSize: 18);
 const kHeaderTitle = TextStyle(
   color: Colors.white,
-  fontSize: 38,
+  fontSize: 32,
   letterSpacing: 22,
   fontFamily: 'Crimson Text',
   fontWeight: FontWeight.w700,

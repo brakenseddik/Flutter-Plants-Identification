@@ -67,7 +67,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/
+    - assets/IMGs/
     - assets/
     - assets/images/
 
@@ -75,17 +75,17 @@ flutter:
   fonts:
     - family: Crimson Text
       fonts:
-        - asset: fonts/CrimsonText-Regular.ttf
-        - asset: fonts/CrimsonText-Italic.ttf
-        - asset: fonts/CrimsonText-Bold.ttf
+        - asset: assets/fonts/CrimsonText-Regular.ttf
+        - asset: assets/fonts/CrimsonText-Italic.ttf
+        - asset: assets/fonts/CrimsonText-Bold.ttf
     - family: Lato
       fonts:
-        - asset: fonts/Lato-Regular.ttf
-        - asset: fonts/Lato-Light.ttf
-        - asset: fonts/Lato-Thin.ttf
+        - asset: assets/fonts/Lato-Regular.ttf
+        - asset: assets/fonts/Lato-Light.ttf
+        - asset: assets/fonts/Lato-Thin.ttf
     - family: CM Sans Serif
       fonts:
-        - asset: fonts/cm_sans_serif_2012.ttf
+        - asset: assets/fonts/cm_sans_serif_2012.ttf
 
   #   - family: Trajan Pro
   #     fonts:

@@ -104,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               SizedBox(height: 30.0),
                               Text(
-                                'Cree votre proprre collection de  plantes ',
+                                'Créer votre propre collection de plantes ',
                                 style: kTitleStyle,
                                 textAlign: TextAlign.center,
                               ),
@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 Center(
                                   child: Image(
                                     image: AssetImage(
-                                      'images/flower.png',
+                                      'assets/IMGs/flower.png',
                                     ),
                                     height: 250.0,
                                     width: 250.0,
@@ -142,7 +142,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 ),
                                 SizedBox(height: 15.0),
                                 Text(
-                                  'Faire identifiez des plantes que vous ne connaisez pas par noutre service',
+                                  'Faire identifiez des plantes que vous ne connaissez pas par notre service',
                                   style: kSubtitleStyle,
                                   textAlign: TextAlign.center,
                                 ),
@@ -159,7 +159,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               Center(
                                 child: Image(
                                   image: AssetImage(
-                                    'images/plant.png',
+                                    'assets/IMGs/plant.png',
                                   ),
                                   height: 250.0,
                                   width: 250.0,
