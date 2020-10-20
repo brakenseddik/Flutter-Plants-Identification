@@ -32,3 +32,7 @@ plant identification app written with <3 flutter & firebase
   <img src="https://github.com/brakenseddik/plants_identification/blob/master/assets/images/smartmockups_kf2ww59d.png" width="250" alt=" text">
   <img src="https://github.com/brakenseddik/plants_identification/blob/master/assets/images/smartmockups_kfbgo4pu.png" width="250" alt=" text">
 </p>
+<p align="center">
+  <img src="https://github.com/brakenseddik/plants_identification/blob/master/assets/images/smartmockups_kfbgokvm.png" width="250" title="hover text">
+  <img src="https://github.com/brakenseddik/plants_identification/blob/master/assets/images/smartmockups_kfbgp08n.png" width="250" alt=" text">
+</p>
