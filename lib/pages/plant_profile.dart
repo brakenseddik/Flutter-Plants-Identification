@@ -117,7 +117,7 @@ class _ProfileState extends State<Profile> {
                               Row(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.category,
+                                    Icons.bookmark,
                                     color: color,
                                     size: 24,
                                   ),
@@ -167,7 +167,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     widget.post.data['history'],
-                                    textAlign: TextAlign.justify,
+                                    //  textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: Colors.black38, fontSize: 18),
                                   ),
@@ -204,7 +204,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     widget.post.data['description'],
-                                    textAlign: TextAlign.justify,
+                                    // textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: Colors.black38, fontSize: 18),
                                   ),
@@ -241,7 +241,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     widget.post.data['emploi'],
-                                    textAlign: TextAlign.justify,
+                                    //textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         color: Colors.black38, fontSize: 18),
                                   ),

@@ -176,10 +176,10 @@ class _SavedState extends State<Saved> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(5.0),
                                     child: Text(
                                       showData[index]['name'],
-                                      style: TextStyle(fontSize: 22),
+                                      style: TextStyle(fontSize: 18),
                                     ),
                                   ),
                                 )

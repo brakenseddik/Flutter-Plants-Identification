@@ -25,7 +25,7 @@ const klisttileSubtitle = TextStyle(
 const ktitleProfile = TextStyle(color: Color(0XFF82DE3A), fontSize: 24);
 const kbigTitle = TextStyle(
     fontFamily: 'Lato',
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
     color: Colors.white,
     fontSize: 18);
 const kHeaderTitle = TextStyle(

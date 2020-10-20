@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
               )
             : Center(
                 child: Image(
-                  image: AssetImage('assets/IMGs/offline-icon-6.png'),
+                  image: AssetImage('assets/images/offline-icon-6.png'),
                   height: 300,
                   width: 300,
                 ),

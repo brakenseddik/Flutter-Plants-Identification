@@ -32,7 +32,7 @@ class _AppInfoState extends State<AppInfo> {
                               width: 75,
                               height: 75,
                               image: AssetImage(
-                                'assets/IMGs/playstore.png',
+                                'assets/images/playstore.png',
                               ),
                             ),
                           ),
@@ -68,7 +68,7 @@ class _AppInfoState extends State<AppInfo> {
                         // colorFilter: ColorFiltered(colorFilter: C),
                         scale: 0.1,
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/IMGs/splash.jpg')),
+                        image: AssetImage('assets/images/splash.jpg')),
                   ),
                 ),
                 SizedBox(

@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_fin_etude/components/bezierContainer.dart';
 import 'package:project_fin_etude/models/users.dart';
 import 'package:project_fin_etude/pages/auth/login.dart';
-import 'package:project_fin_etude/components/bezierContainer.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key, this.title}) : super(key: key);
@@ -26,7 +26,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String _name;
   String validateName(String value) {
     if (value.length < 5)
-      return 'Name must be more than 5 charater';
+      return 'Name must be more than 5 characters';
     else
       return null;
   }
@@ -88,6 +88,8 @@ class _SignUpPageState extends State<SignUpPage> {
               onSaved: (input) => _name = input,
               obscureText: isPassword,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  hintText: 'Enter a name',
                   border: InputBorder.none,
                   fillColor: Color(0xfff3f3f4),
                   filled: true))
@@ -116,6 +118,8 @@ class _SignUpPageState extends State<SignUpPage> {
               onSaved: (input) => _email = input,
               obscureText: isPassword,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  hintText: 'Enter an E-mail',
                   border: InputBorder.none,
                   fillColor: Color(0xfff3f3f4),
                   filled: true))
@@ -143,6 +147,8 @@ class _SignUpPageState extends State<SignUpPage> {
               onSaved: (input) => _password = input,
               obscureText: isPassword,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  hintText: 'Enter a password',
                   border: InputBorder.none,
                   fillColor: Color(0xfff3f3f4),
                   filled: true))

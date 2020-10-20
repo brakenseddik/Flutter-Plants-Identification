@@ -129,7 +129,7 @@ class ActivityState extends State<Activity> {
                                           ),
                                           Text(
                                             snapshot.data[index].data['family'],
-                                            style: TextStyle(fontSize: 18.0),
+                                            style: TextStyle(fontSize: 17.0),
                                           ),
                                         ],
                                       )

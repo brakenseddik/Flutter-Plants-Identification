@@ -96,7 +96,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               Center(
                                 child: Image(
                                   image: AssetImage(
-                                    'images/1.png',
+                                    'assets/images/1.png',
                                   ),
                                   height: 250.0,
                                   width: 250.0,
@@ -104,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                               SizedBox(height: 30.0),
                               Text(
-                                'Créer votre propre collection de plantes ',
+                                'Créez votre propre collection de plantes ',
                                 style: kTitleStyle,
                                 textAlign: TextAlign.center,
                               ),
@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 Center(
                                   child: Image(
                                     image: AssetImage(
-                                      'assets/IMGs/flower.png',
+                                      'assets/images/flower.png',
                                     ),
                                     height: 250.0,
                                     width: 250.0,
@@ -159,7 +159,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               Center(
                                 child: Image(
                                   image: AssetImage(
-                                    'assets/IMGs/plant.png',
+                                    'assets/images/plant.png',
                                   ),
                                   height: 250.0,
                                   width: 250.0,
@@ -228,16 +228,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         ),
       ),
       bottomSheet: _currentPage == _numPages - 1
-          ? Container(
-              height: 70.0,
-              width: double.infinity,
-              color: Colors.white,
-              child: GestureDetector(
-                onTap: () => {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => LoginPage(),
-                  ))
-                },
+          ? GestureDetector(
+              onTap: () => {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ))
+              },
+              child: Container(
+                height: 70.0,
+                width: double.infinity,
+                color: Colors.white,
                 child: Center(
                   child: Text(
                     'Get started',

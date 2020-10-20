@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_fin_etude/components/bezierContainer.dart';
 import 'package:project_fin_etude/pages/auth/signup.dart';
 import 'package:project_fin_etude/pages/home_page.dart';
-import 'package:project_fin_etude/components/bezierContainer.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -20,6 +20,8 @@ class _LoginPageState extends State<LoginPage> {
 
   String _email;
   String _password;
+  bool isPassword = true;
+  String errorMsg = '';
 
   /*Widget _backButton() {
     return InkWell(
@@ -42,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 */
-  Widget _entryEmail(String title, {bool isPassword = false}) {
+  Widget _entryEmail(String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -67,8 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                 return null;
               },
               onSaved: (input) => _email = input,
-              obscureText: isPassword,
+              // obscureText: isPassword,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  hintText: 'Enter your E-mail',
                   border: InputBorder.none,
                   fillColor: Color(0xfff3f3f4),
                   filled: true))
@@ -77,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _entryPassword(String title, {bool isPassword = false}) {
+  Widget _entryPassword(String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -100,6 +104,18 @@ class _LoginPageState extends State<LoginPage> {
               onSaved: (input) => _password = input,
               obscureText: isPassword,
               decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        isPassword ? Icons.visibility : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        isPassword = !isPassword;
+                        print(isPassword);
+                      });
+                    },
+                  ),
+                  hintText: 'Enter your password',
                   border: InputBorder.none,
                   fillColor: Color(0xfff3f3f4),
                   filled: true))
@@ -196,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       children: <Widget>[
         _entryEmail("Email "),
-        _entryPassword("Password", isPassword: true),
+        _entryPassword("Password"),
       ],
     );
   }
@@ -321,7 +337,28 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           loading = false;
         });
-      } catch (e) {
+      } catch (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        switch (errorCode) {
+          case "ERROR_WRONG_PASSWORD":
+          case "ERROR_INVALID_EMAIL":
+            {
+              errorMessage = "Wrong password or Email.";
+              break;
+            }
+          case "ERROR_NETWORK_REQUEST_FAILED":
+            {
+              errorMessage = "Check your internet connection.";
+              break;
+            }
+          case "ERROR_USER_NOT_FOUND":
+          case "ERROR_USER_DISABLED":
+            {
+              errorMessage = "Account not found or disabled";
+              break;
+            }
+        }
         setState(() {
           loading = false;
         });
@@ -329,11 +366,11 @@ class _LoginPageState extends State<LoginPage> {
           ..showSnackBar(
             SnackBar(
               content: Text(
-                'Login Error',
+                'Login Error : ' + errorMessage,
               ),
             ),
           );
-        print(e);
+        print(error);
       }
     } else {
       setState(() {
@@ -344,7 +381,7 @@ class _LoginPageState extends State<LoginPage> {
         ..showSnackBar(
           SnackBar(
             content: Text(
-              'Login Error',
+              'Login Error :Empty fields',
             ),
           ),
         );
